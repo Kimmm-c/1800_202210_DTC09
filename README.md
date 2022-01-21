@@ -7,6 +7,7 @@
 ## General Info
 This browser based web application to ...
 * Hi my name is Kim. I'm excited about this project because it is practical.
+* Hi my name is Joushua, I'm excited about this project because it is practical
 	
 ## Technologies
 Technologies used for this project:
