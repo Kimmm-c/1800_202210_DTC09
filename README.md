@@ -7,12 +7,9 @@
 ## General Info
 This browser based web application to ...
 * Hi my name is Kim. I'm excited about this project because it is practical.
-<<<<<<< HEAD
 * Hi my name is Joushua, I'm excited about this project because it is practical
 	
-=======
 * Hello, I am Oscar. I like this project because it is fun
->>>>>>> b8fea16484aafc5f9f337eb48d4b2a1e5216eb4b
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
