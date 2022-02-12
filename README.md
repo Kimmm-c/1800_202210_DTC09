@@ -8,8 +8,8 @@
 This browser based web application to ...
 * Hi my name is Kim. I'm excited about this project because it is practical.
 * Hi my name is Joushua, I'm excited about this project because it is practical
-	
-* Hello, I am Oscar. I like this project because it is fun
+* Hello, I am Oscar, I like this project because it is fun
+
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
