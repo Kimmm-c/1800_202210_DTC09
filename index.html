@@ -28,6 +28,23 @@
 
     <!-- Link to styles of your own -->
     <!-- <link type="text/css" href="./styles/style.css"> -->
+    <style>
+        body {
+            padding-top: 60px;
+        }
+
+        @media (max-width: 980px) {
+            body {
+                padding-top: 0;
+            }
+        }
+
+        nav {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+
 
 </head>
 
@@ -38,76 +55,83 @@
     <!------------------------------>
 
     <!-- Navigation section -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">
-                <h4>Friends</h4>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            </ul>
-            <div class="dropdown" py-3>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu"
-                    data-bs-toggle="dropdown" aria-expanded="False">
-                    <a class="material-icons text-dark">account_circle</a>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><b>Friend</b></a>
+                <div class="dropdown">
+                    <button class="btn text-dark dropdown-toggle" type="button" id="dropdownMenu"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        What we offer
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Mood Tracker</button></li>
+                        <li><button class="dropdown-item" type="button">Meditation</button></li>
+                        <li><button class="dropdown-item" type="button">Forum</button></li>
+                    </ul>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                </ul>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <a class="material-icons text-dark">menu</a>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-    <!-- Jumbotron -->
-    <div class="container py-4">
-
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">FRIEND is here for you</h1>
-                <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <button class="btn btn-primary btn-lg" type="button">Sign up</button>
-                <button class="btn btn-secondary btn-lg" type="button">Log in</button>
-            </div>
-        </div>
-
-        <div class="row align-items-md-stretch">
-            <div class="col-md-6">
-                <div class="h-100 p-5 text-white bg-dark rounded-3">
-                    <h2>Mental Health</h2>
-                    <h5>What you need to know</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <button class="btn btn-outline-light" type="button">Explore</button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <button class="btn btn-lg material-icons text-dark" type="button">account_circle</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="h-100 p-5 bg-light border rounded-3">
-                    <h2>What you can expect from your FRIEND</h2>
-                    <p>Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit. Feugiat in ante metus dictum at. Nisl tincidunt eget nullam non nisi est sit.</p>
-                    <button class="btn btn-outline-secondary" type="button">Explore</button>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Jumbotron -->
+        <div class="container py-4">
+
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">FRIEND is here for you</h1>
+                    <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="btn btn-primary btn-lg" type="button">Sign up</button>
+                    <button class="btn btn-secondary btn-lg" type="button">Log in</button>
                 </div>
             </div>
+
+            <div class="row align-items-md-stretch">
+                <div class="col-md-6">
+                    <div class="h-100 p-5 text-white bg-dark rounded-3">
+                        <h2>Mental Health</h2>
+                        <h5>What you need to know</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                        <button class="btn btn-outline-light" type="button">Explore</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h-100 p-5 bg-light border rounded-3">
+                        <h2>What you can expect from your FRIEND</h2>
+                        <p>Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit. Feugiat in ante metus
+                            dictum at. Nisl tincidunt eget nullam non nisi est sit.</p>
+                        <button class="btn btn-outline-secondary" type="button">Explore</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-    </div>
 
 
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <!-- Link to API keys go here -->
+        <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <!-- Link to API keys go here -->
-    <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
-
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+        <!-- Link to scripts of your own -->
+        <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
