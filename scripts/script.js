@@ -142,7 +142,7 @@ function writeWebcamData() {
 function search_song(){
     let input = document.getElementById('searchbar').value
     input=input.toLowerCase();
-    let x = document.getElementsByClassName('songs');
+    let x = document.getElementsByClassName("card-title");
       
     for (i = 0; i < x.length; i++) { 
         if (!x[i].innerHTML.toLowerCase().includes(input)) {
