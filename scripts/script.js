@@ -137,6 +137,7 @@ function writeWebcamData() {
             })
     })
 }
+<<<<<<< HEAD
 // Search bar for meditation
 
 function search_song(){
@@ -154,3 +155,5 @@ function search_song(){
 }}
 
 //   End of Search bar for meditation
+=======
+>>>>>>> 3eecee5f0083a09a66dd8877c95eb12c273d9896

@@ -1,8 +1,7 @@
-#searchbar{
-    margin-top: 70px;
-    margin-bottom: 30px;
-    width: 50%;
-    margin-left:200px;
+.search{
+    float: right;
+    width: 300px;
+    clear:both;
 
 }
 

@@ -22,11 +22,14 @@
     <!-- Firebase 8 Library related JS CDN go here-->
 
     <!-- Other libraries go here -->
-
+    <!--jQuery Library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Link to styles of your own -->
+    
     <!-- <link type="text/css" href="./styles/style.css"> -->
     <style>
         body footer {
@@ -66,36 +69,7 @@
     <!-- Navigation section -->
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#"><b>Friend</b></a>
-                <div class="dropdown">
-                    <button class="btn text-dark dropdown-toggle" type="button" id="dropdownMenu"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        What we offer
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Mood Tracker</button></li>
-                        <li><button class="dropdown-item" type="button">Meditation</button></li>
-                        <li><button class="dropdown-item" type="button">Forum</button></li>
-                    </ul>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <button class="btn btn-lg material-icons text-dark" type="button">account_circle</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Navbar -->
-        </nav>
+        <nav id="navbarPlaceholder"></nav>
 
         <!-- Jumbotron -->
         <div class="container py-4">
@@ -133,55 +107,13 @@
             </div>
         </div>
 
-        <div class="container py-4" id="features">
-            <!-- Navigation to other features -->
-            <div class="p-5 mb-4 bg-light rounded-3">
-                <div class="container-fluid py-3">
-                    <h2 class="display-5 fw-bold"> Features </h2>
-                    <button class="btn btn-light btn-outline-secondary" type="button"> <a href="./meditation.html"> <img width="30em"
-                                src="./images/meditation.png" alt="Meditating"> </a> </button>
-                    <button class="btn btn-light btn-outline-secondary" type="button"> <a href="./moodtracker.html"> <img width="30em"
-                                src="./images/Happy-face.png" alt="Happy-face"> </a> </button>
-                    <button class="btn btn-light btn-outline-secondary" type="button"> <a href="./forum.html"> <img width="30m"
-                                src="./images/feather.png" alt="Feather"> </a> </button>
-                </div>
-            </div>
-        </div>
+        <!-- Footer Nav Bar -->
+        <nav id="footerNavBar"></nav>
+        
+        <!-- Footer -->
+        <nav id="footerPlaceholder"></nav>
 
-        <!-- Remove the container if you want to extend the Footer to full width. -->
-        <div class="container my-5">
-            <footer class="bg-dark text-white text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm m-4 mx-auto">
-                            <ul class="list-unstyled">
-                                <li><a href="#!" class="text-white">About Us</a></li>
-                                <li><a href="#!" class="text-white">Help</a></li>
-                                <li><a href="#!" class="text-white">Q&A</a></li>
-                                <li><a href="#!" class="text-white">Career</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm m-4 mx-auto">
-                            <ul class="list-unstyled">
-                                <li><a href="#!" class="text-white">Contact Us</a></li>
-                                <li><a href="#!" class="text-white">Location</a></li>
-                                <li><a href="#!" class="text-white">Maps</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm m-4 mx-auto">
-                            <div class="input-group">
-                                <input class="form-control border" type="search" value="Search" id="searchInput">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Copyright -->
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                    © 2020 Copyright:
-                    <a class="text-white" href="https://mdbootstrap.com/">Friends Inc.</a>
-                </div>
-            </footer>
-        </div>
+        
         <!-- End of .container -->
 
         <!---------------------------------------------->
@@ -192,7 +124,8 @@
 
         <!-- Link to scripts of your own -->
         <!-- <script src="./scripts/script.js"></script> -->
-
+        <!--skeleton for footer and header-->>
+        <script src="./scripts/skeleton.js"></script>
 </body>
 
 </html>

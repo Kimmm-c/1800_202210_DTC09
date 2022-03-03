@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Meditation</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!-- Required meta tags -->
@@ -22,7 +22,8 @@
     <!-- Firebase 8 Library related JS CDN go here-->
 
     <!-- Other libraries go here -->
-
+    <!--jQuery Library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -49,6 +50,16 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: baseline;
+        }
+
+        #card-container button {
+            border: none;
+            background: white;
+        }
+
+        #card-container a {
+            text-decoration: none;
+            text-align: left;
         }
 
         /* .card {
@@ -101,15 +112,12 @@
         <!-- Navbar -->
         </nav>
     </header>
-    
 
+
+    <nav id="navbarPlaceholder"></nav>
 
     <!-- Jumbotron -->
     <div class="container py-4">
-        <div>
-            <input id="searchbar" type="text" placeholder="song name...">
-            <button id="searchbutton" type="submit" onclick="search_song()">Search</button>
-        </div>
 
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid py-5">
@@ -118,138 +126,197 @@
                     tempor
                     incididunt ut labore et dolore magna aliqua.</p>
             </div>
+            
         </div>
+        
 
         <section>
+
             <!-- Cards containter -->
             <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="search" style="float: right;">
+                    <input id="searchbar" type="text" placeholder="song name...">
+                    <button id="searchbutton" type="submit" onclick="search_song()">Search</button>
+                </div>
                 <h2> Meditation Playlist: </h2>
                 <main id="card-container">
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 1</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the
-                                bulk
-                                of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="./meditation-pages/page1.html">
+                                <div class="card-body">
+                                    <h5 class="card-title">1 - Min Breathing </h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 2</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the
-                                bulk
-                                of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 3</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the
-                                bulk
-                                of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 4</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the
-                                bulk
-                                of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 5</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the
-                                bulk
-                                of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 6</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the
-                                bulk
-                                of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 7</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 8</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Song 9</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
+                    </div>
+                    <div class="card mb-3" style="max-width: 18rem;">
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
+                    </div>
+                    <div class="card mb-3" style="max-width: 18rem;">
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
+                    </div>
+                    <div class="card mb-3" style="max-width: 18rem;">
+                        <button type="button">
+                            <a href="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Light card title</h5>
+                                </div>
+                            </a>
+                        </button>
                     </div>
                 </main>
             </div>
         </section>
 
-    </div>
+       
 
-    <!-- Remove the container if you want to extend the Footer to full width. -->
-    <div class="container my-5">
-        <footer class="bg-dark text-white text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm m-4 mx-auto">
-                        <ul class="list-unstyled">
-                            <li><a href="#!" class="text-white">About Us</a></li>
-                            <li><a href="#!" class="text-white">Help</a></li>
-                            <li><a href="#!" class="text-white">Q&A</a></li>
-                            <li><a href="#!" class="text-white">Career</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm m-4 mx-auto">
-                        <ul class="list-unstyled">
-                            <li><a href="#!" class="text-white">Contact Us</a></li>
-                            <li><a href="#!" class="text-white">Location</a></li>
-                            <li><a href="#!" class="text-white">Maps</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm m-4 mx-auto">
-                        <div class="input-group">
-                            <input class="form-control border" type="search" value="Search" id="searchInput">
+        <!-- Remove the container if you want to extend the Footer to full width. -->
+        <div class="container my-5">
+            <footer class="bg-dark text-white text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm m-4 mx-auto">
+                            <ul class="list-unstyled">
+                                <li><a href="#!" class="text-white">About Us</a></li>
+                                <li><a href="#!" class="text-white">Help</a></li>
+                                <li><a href="#!" class="text-white">Q&A</a></li>
+                                <li><a href="#!" class="text-white">Career</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm m-4 mx-auto">
+                            <ul class="list-unstyled">
+                                <li><a href="#!" class="text-white">Contact Us</a></li>
+                                <li><a href="#!" class="text-white">Location</a></li>
+                                <li><a href="#!" class="text-white">Maps</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm m-4 mx-auto">
+                            <div class="input-group">
+                                <input class="form-control border" type="search" value="Search" id="searchInput">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2020 Copyright:
-                <a class="text-white" href="https://mdbootstrap.com/">Friends Inc.</a>
-            </div>
-        </footer>
-    </div>
-    <!-- End of .container -->
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2020 Copyright:
+                    <a class="text-white" href="https://mdbootstrap.com/">Friends Inc.</a>
+                </div>
+            </footer>
+        </div>
+        <!-- End of .container -->
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <!-- Link to API keys go here -->
-    <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <!-- Link to API keys go here -->
+        <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
 
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+        <!-- Link to scripts of your own -->
+        <!-- <script src="./scripts/script.js"></script> -->
+        <!-- Footer Nav Bar -->
+        <nav id="footerNavBar"></nav>
+
+        <!-- Footer -->
+        <nav id="footerPlaceholder"></nav>
+
+
+        <!-- End of .container -->
+
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <!-- Link to API keys go here -->
+        <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
+
+        <!-- Link to scripts of your own -->
+        <!-- <script src="./scripts/script.js"></script> -->
+        <!--skeleton for footer and header-->>
+        <script src="./scripts/skeleton.js"></script>
 
 </body>
 
