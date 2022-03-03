@@ -1,0 +1,11 @@
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+/* .card {
+    border-radius: 10px 50px;
+    background: linear-gradient(to right, rgba(64,224,208, 0.7), rgb(175,238,238));
+} */
