@@ -29,7 +29,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
 
@@ -40,9 +40,54 @@
 
     <!-- Link to styles of your own -->
     <link type="text/css" href="../css/style.css">
-    <style></style>
+    <style>
+        #week-report {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: baseline;
 
+        }
 
+        #week-report h6 {
+            text-align: center;
+        }
+
+        #week-report span {
+            margin-top: 1em;
+            text-align: center;
+        }
+
+        .p-2 h3 {
+            margin: 1%;
+        }
+
+        .mood-NavBar {
+            box-sizing: border-box;
+            width: 50%;
+            background-color: rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding: 5px;
+
+            /* border-radius: 100px; */
+        }
+
+        .mood-NavBar button {
+            /* border-radius: 100px; */
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            width: 30%;
+        }
+
+        .mood-NavBar a {
+            text-decoration: none;
+        }
+    </style>
 
 </head>
 
@@ -54,30 +99,86 @@
 
     <!-- Navigation section -->
     <header>
-        <!-- Navbar -->
         <nav id="navbarPlaceholder"></nav>
     </header>
+    <!-- Jumbotron -->
+    <div class="mood-NavBar">
+        <a href="./moodtracker-content/mood-calendar.html">
+            <button class="btn btn-light btn-outline-secondary" type="button" id="stats-button">
+            Stats </button> </a>
+        <a href="./moodtracker-content/mood-tracking.html">
+        <button class="btn btn-light btn-outline-secondary" type="button" id="track-button"> Track
+         </button>  </a>
+    </div>
+
+    <div class="container py-4">
+
+        <div class="p-2 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">How have you been?</h1>
+                <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+
+        <div class="p-2 mb-4 bg-light rounded-3">
+            <h3> Daily Report: </h3>
+            <div class="container-fluid py-5" id="week-report">
+                <div class="card" style="width: 19%;">
+                    <span style="font-size: 100%;"> &#128532; </span>
+                    <div class="card-body">
+                        <h6 class="card-text"> Monday </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 19%;">
+                    <span style="font-size: 100%;"> &#128529; </span>
+                    <div class="card-body">
+                        <h6 class="card-text"> Tuesday </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 19%;">
+                    <span style="font-size: 100%;"> &#128512; </span>
+                    <div class="card-body">
+                        <h6 class="card-text"> Wednesday </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 19%;">
+                    <span style="font-size: 100%;"> &#128532; </span>
+                    <div class="card-body">
+                        <h6 class="card-text">Thursday </h6>
+                    </div>
+                </div>
+                <div class="card" style="width: 19%;">
+                    <span style="font-size: 100%;"> &#128512; </span>
+                    <div class="card-body">
+                        <h6 class="card-text"> Friday </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <!-- Footer Nav Bar -->
     <nav id="footerNavBar"></nav>
-        
+
     <!-- Footer -->
     <nav id="footerPlaceholder"></nav>
 
-    
+
     <!-- End of .container -->
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-    <!-- Link to API keys go here -->
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+    <script src="../scripts/firebaseAPI_TEAM99.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/script.js"></script>
 
     <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    <!--skeleton for footer and header-->
 
-    <script src="../scripts/skeleton.js"></script>
 
 </body>
 
