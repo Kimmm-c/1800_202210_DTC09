@@ -17,10 +17,8 @@ function sayHello() {
         }
     });
 }
-//sayHello();
 
 // Search bar for meditation
-
 function search_song(){
     let input = document.getElementById('searchbar').value
     input=input.toLowerCase();
@@ -34,5 +32,3 @@ function search_song(){
             x[i].style.display="list-item";                 
         }
 }}
-
-//   End of Search bar for meditation
