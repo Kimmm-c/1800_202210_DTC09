@@ -26,7 +26,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
 
@@ -81,14 +81,15 @@
     </header>
     <!-- Jumbotron -->
     <div class="container py-4">
-        <div><button type="submit">Save</button>
+        <div><button type="submit" onclick="saveDraft()">Save</button>
             <button type="submit">Publish</button>
             <button type="submit">Discard</button>
-            </div>
+        </div>
 
         <label for="content">Write something:</label>
         <br>
-        <input type="text" style="height: 1000px;width:1000px;">
+        <input type="text" placeholder="Title" id="thread_title">
+        <input type="text" style="height: 1000px;width:1000px;" id="writing_something">
     </div>
 
 
@@ -103,13 +104,14 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="../../scripts/authentication.js"></script>
+    <script src="../../scripts/skeleton.js"></script>
+    <script src="../../scripts/script.js"></script>
+    <script src="../../scripts/commenting.js"></script>
 
     <!-- Link to scripts of your own -->
 
-    
+
 </body>
 
 </html>
