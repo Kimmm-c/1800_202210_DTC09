@@ -16,13 +16,30 @@ function read_display_Quote() {
 function writeMood(moodResponse) {
     let day = document.getElementById("today").innerHTML
     let question = document.getElementById("question").innerHTML
-    console.log(moodResponse, day, question)
+    
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection('users').doc(user.uid);
+            var userID = user.uid;
+            console.log(`UID`, userID)
+
+            currentUser.get()
+                .then(userDoc => {
+                    db.collection('moodtracker').add({
+                        day: day,
+                        question: question,
+                        user: userID
+                    })
+                    .then(console.log('submitted'))
+                })
+        }
+        else console.log("no user signed in")
+    })
 
 }
 
 
 function getRandInt() {
-    
     return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
 }
 
