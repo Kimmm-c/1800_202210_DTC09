@@ -72,27 +72,39 @@
         <div class="p-5 mb-4 bg-light rounded-3">
             <button id="back-button" type="button" class="btn btn-success"> <img width='30px' src="https://cdn-icons-png.flaticon.com/512/130/130882.png" alt=""></button>
             <div class="container-fluid py-5">
-                <span id="question-goes-here">...</span>
+                <h3><span id="today"></span></h3>
+                <span id="question">Question Placeholder</span>
             </div>
             <section id="choices">
-                <button type="button" class="btn btn-success response_button" id="very-often">Very often</button>
-                <button type="button" class="btn btn-success response_button" id="fairly-often">Fairly oftern</button>
-                <button type="button" class="btn btn-success response_button" id="sometimes">Sometimes</button>
-                <button type="button" class="btn btn-success response_button" id="almost-never">Almost never</button>
-                <button type="button" class="btn btn-success response_button" id="never">Never</button>
+                <button class="btn btn-success response_button" id="very-often" checked="">Very often</button>
+                <button class="btn btn-success response_button" id="fairly-often" checked="">Fairly often</button>
+                <button class="btn btn-success response_button" id="sometimes" checked="">Sometimes</button>
+                <button class="btn btn-success response_button" id="almost-never" checked="">Almost never</button>
+                <button class="btn btn-success response_button" id="never" checked="">Never</button>
             </section>
             
         </div>
-        <button id="next-button" type="button" class="btn btn-success">Next</button>
+        <button id="next-button" type="button" class="btn btn-success" onclick="writeMood(moodResponse)">Next</button>
     </div>
 
 
 </body>
+<script>
+    let moodResponse; // this will temporarily store our moodResponse value for now lol
+    let buttons = Array.from(document.querySelectorAll("button"));
+    buttons.map((b) =>{
+        b.addEventListener('click', () => {
+            moodResponse = b.textContent;
+            //console.log(`Mood Chosen: `, moodResponse)
+        });
+    })
 
-<!-- Main body -->
-
-
-
+    // scuffed datetime
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const d = new Date();
+    document.getElementById('today').innerHTML = weekday[d.getDay()];
+    
+</script>
 <!-- End of .container -->
 
 <!---------------------------------------------->
