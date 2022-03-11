@@ -28,6 +28,7 @@ function writeMood(moodResponse) {
                     db.collection('moodtracker').add({
                         day: day,
                         question: question,
+                        moodResponse: moodResponse,
                         user: userID
                     })
                     .then(console.log('submitted'))
