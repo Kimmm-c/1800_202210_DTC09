@@ -1,63 +1,65 @@
-function populateFeatured() {
-    let activityCardTemplate = document.getElementById("activityCardTemplate");
-    let activityCardGroup = document.getElementById("activityCardGroup");
-    
-    db.collection('meditation').get()
-        .then(allActivity => {
-            allActivity.forEach(doc => {
-                var activityName = doc.data().activity;
-                var activityLength = doc.data().length;
-                var songName = doc.data().song;
-                let activityCard = activityCardTemplate.content.cloneNode(true);
-                
-                activityCard.querySelector('.cardTitle').innerHTML = activityName;
-                activityCard.querySelector('.activityLength').innerHTML = activityLength;
-                activityCard.querySelector('img').src = `https://picsum.photos/${getRandInt()}/200/`; //will change later
-                activityCardGroup.appendChild(activityCard);
-            })
-        })
-};
-
 function populateRecent() {
+    let recentTab = document.getElementById('recent');
+    
+    if (recentTab.getAttribute('selected') == 'false') return;
+
     let activityCardTemplate = document.getElementById("activityCardTemplate");
     let activityCardGroup = document.getElementById("activityCardGroup");
 
     let activityCard = activityCardTemplate.content.cloneNode(true);
+    
     activityCard.querySelector('.cardTitle').innerHTML = 'Hello';  
+    activityCard.querySelector('.activityLength').innerHTML = 'Gang';
+    activityCard.querySelector('img').src = `https://picsum.photos/${getRandInt(200, 299)}/200/`; //will change later
+    activityCardGroup.appendChild(activityCard);
+};
+
+
+function populateFeatured() {
+    let activityCardTemplate = document.getElementById("activityCardTemplate");
+    let activityCardGroup = document.getElementById("activityCardGroup");
+
+    const activities = ['Breathe', 'Sleep', 'Relax']
+    activities.forEach(element => {
+        let activityCard = activityCardTemplate.content.cloneNode(true);
+        activityCard.querySelector('.cardTitle').innerHTML = element;
+        activityCard.querySelector('button').onclick = () => setActivityData(element);
+        activityCard.querySelector('.activityLength').innerHTML = `${getRandInt(5, 10)} - ${getRandInt(10, 20)} mins`;
+        activityCard.querySelector('img').src = `https://picsum.photos/${getRandInt(200, 299)}/200/`; //will change later
+        activityCardGroup.appendChild(activityCard);
+    })
 }
 
-function getRandInt() {
-    return Math.floor((Math.random() * 299) + 200);
+
+function setActivityData(element) {
+    localStorage.setItem('activityID', element)
+}
+
+function getRandInt(min, max) {
+    return Math.floor((Math.random() * max) + min);
 };
 
-function checkTab() {
-    let recentTab = document.getElementById("recent");
-    let featuredTab = document.getElementById("featured");
-
-    if (featuredTab.getAttribute('selected') == 'true') populateFeatured();
-    else populateRecent();
-};
 
 function clickTab() {
     let recentTab = document.getElementById('recent');
     let featuredTab = document.getElementById("featured");
 
     recentTab.addEventListener("click", () => {
-        recentTab.setAttribute('selected', 'true')
-        featuredTab.setAttribute('selected', 'false')
         featuredTab.className = 'buttonInactive'
         recentTab.className = 'buttonActive'
-        return;
+        featuredTab.setAttribute('selected', 'false')
+        recentTab.setAttribute('selected', 'true')
     });
 
     featuredTab.addEventListener("click", () => {
-        featuredTab.setAttribute('selected', 'true')
-        recentTab.setAttribute('selected', 'false')
         featuredTab.className = 'buttonActive'
         recentTab.className = 'buttonInactive'
-        return;
+        featuredTab.setAttribute('selected', 'true')
+        recentTab.setAttribute('selected', 'false')
     });
 };
 
+
+
 clickTab();
-checkTab();
+populateFeatured();
