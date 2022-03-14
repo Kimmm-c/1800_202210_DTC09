@@ -1,11 +1,209 @@
-#card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
+main {
+    display: block;
 }
 
-/* .card {
-    border-radius: 10px 50px;
-    background: linear-gradient(to right, rgba(64,224,208, 0.7), rgb(175,238,238));
-} */
+.titleContainer {
+    margin: 0px auto;
+    max-width: 100%;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.title {
+    font-family: Apercu, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    color: rgb(58, 57, 56);
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-left: 10px;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+.imgContainer {
+    flex-basis: 50%;
+    overflow: hidden;
+    padding-bottom: 66.6667%;
+    position: relative;
+    border-radius: 0.5rem;
+    margin: -40px 35px 0px 35px;
+}
+
+.actualImg {
+    background-color: rgb(203, 203, 204);
+    object-fit: cover;
+    object-position: 50% 50%;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.featureContainer {
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0px;
+    padding-top: 1rem;
+}
+
+.featureBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.featuredBar {
+    border: 0.0625rem solid rgb(229, 229, 229);
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    height: 1.25rem;
+    line-height: 1.25em;
+    overflow: hidden;
+    padding: calc((1.125rem - 1.25em) / 2) 0.5rem;
+    position: relative;
+    text-overflow: ellipsis;
+    user-select: none;
+    white-space: nowrap;
+    background: rgb(255, 255, 255);
+    border-radius: 0.25rem;
+    color: rgb(75, 76, 77);
+}
+
+.featureTitle {
+    color: rgb(58, 57, 56);
+    font-family: Apercu, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    font-size: 2rem;
+    line-height: 110%;
+    margin-top: 5px;
+}
+
+.featureHeader2 {
+    font-family: Apercu, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.audioSVG {
+    margin-right: 0.25rem;
+    vertical-align: middle;
+    height: 1rem;
+    width: 1rem;
+}
+
+.buttonContainer {
+    margin: 0px auto;
+    max-width: 100%;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.listContainer {
+    align-items: stretch;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    list-style: none;
+    margin: 0px;
+    margin-left: 10px;
+    padding: 0px;
+    background: rgb(255, 255, 255);
+    color: rgb(90, 88, 87);
+    justify-content: flex-start;
+    transform: translate(-0.5rem, -0.5rem);
+}
+
+.buttonActive {
+    background: transparent;
+    border-color: transparent;
+    border-radius: 0px;
+    color: rgb(58, 57, 56);
+    opacity: 1;
+    font-weight: bold;
+}
+
+.buttonInactive {
+    background: transparent;
+    border-color: transparent;
+    border-radius: 0px;
+    color: rgb(58, 57, 56);
+    opacity: 1;
+}
+
+.activityList {
+    place-items: stretch;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.listLayout {
+    display: flex;
+    margin-top: 10px;
+}
+
+.activityImg {
+    width: 25%;
+    overflow: hidden;
+}
+
+.cardBody {
+    margin-left: 20px;
+}
+
+.cardTitle {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.activityTitle {
+    margin: 5px 35px 0px 35px;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.activityDesc {
+    margin: 5px 35px 0px 35px;
+}
+
+#activityContent {
+    margin-top: 5px;
+    margin-bottom: 50px;
+}
+
+.activitySection {
+    display: grid;
+    row-gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.activityPads {
+    margin: 0px auto;
+    max-width: 100%;
+    padding: 1.5rem;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border: 0.0625rem solid rgb(229, 229, 229);
+    border-radius: 0.5rem;
+}
