@@ -32,7 +32,7 @@ function populateFeatured() {
 
 
 function setActivityData(element) {
-    localStorage.setItem('activityID', element)
+    localStorage.setItem('activityName', element)
 }
 
 function getRandInt(min, max) {

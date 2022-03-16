@@ -194,25 +194,48 @@ main {
     margin: 5px 35px 0px 35px;
 }
 
-#activityContent {
-    margin-top: 5px;
-    margin-bottom: 50px;
+#quoteContent {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-style: italic;
 }
 
-.activitySection {
+#activitySection {
     display: grid;
     row-gap: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem;    
 }
 
 .activityPads {
-    margin: 0px auto;
+    margin: 10px auto;
     max-width: 100%;
-    padding: 1.5rem;
-    width: 100%;
+    padding: 1rem;
+    width: 90%;
     background: rgb(255, 255, 255);
     border: 0.0625rem solid rgb(229, 229, 229);
     border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#arrowBtn {
+    color: inherit;
+}
+
+
+
+.likeBtn {
+    background-color: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.description {
+    font-size: 13px;
 }
 
 .backBtnContainer {
