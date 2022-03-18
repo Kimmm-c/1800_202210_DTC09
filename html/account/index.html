@@ -26,28 +26,69 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" href="../../css/Account/main.css">
+    <link rel="stylesheet" href="../../css/Account/main.css">
 </head>
 
 <body>
-    <header><nav id="navbarPlaceholder"></nav></header>
-
-    <div id="main">
-        <h1>Account Details</h1>
-        <hr>
-        <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" width="100px">
-        <br>
-        <div>Name: <span id="accountName"></span></div>
-        <div>Email: <span id="accountEmail"></span></div>
-        
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
+    <!-- <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"> -->
+    
+    <div class="main">
+        <div class="accountCard">
+            <div class="pfp">
+                <img src="../../images/default.jpg" id="photo">
+                <input type="file" id="file">
+                <label for="file" id="uploadBtn">Choose Photo </label>
+            </div>
+              
+            <div class="accountDetails">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="accountName" name="name" placeholder="Your name..." value="">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" id="accountEmail" name="email" placeholder="Your Email..." value="" disabled>
+                </div>
+                <div>
+                    <label for="birthday">Birthday</label>
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+                <div>
+                    <span><input type="radio" id="accountGender" name="gender" value="male"> Male</span>
+                    <span><input type="radio" id="accountGender" name="gender" value="female"> Female</span>
+                    <span><input type="radio" id="accountGender" name="gender" value="other"> Other</span>
+                </div>
+                <div>
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="usa">USA</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-top: 10px;">
+                <button class="submitBtn" type="submit">Save</button>
+            </div>
+        </div>
+        <div class="moodtrackerCard">
+            <h1>Moodtracker</h1>
+        </div>
+        <div class="meditationCard">
+            <h1>Meditation</h1>
+        </div>
+        <div class="forumCard">
+            <h1>Forum</h1>
+        </div>
     </div>
-
+    
     <nav id="footerNavBar"></nav>
     <nav id="footerPlaceholder"></nav>
     <script src="../../scripts/firebaseAPI_TEAM99.js"></script>
     <script src="../../scripts/skeleton.js"></script>
     <script src="../../scripts/account.js"></script>
-
 </body>
-
 </html>
