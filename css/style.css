@@ -11,3 +11,123 @@ body footer {
 nav {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+body footer {
+    padding-top: 60px;
+}
+
+nav {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    margin: 1%;
+}
+
+#features {
+    text-align: center;
+}
+
+.main {
+    margin: 40px;
+}
+
+.main-container {
+    
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.heading-text {
+    font-style: normal;
+    font-weight: 700;
+    font-family: sans-serif;
+    color: #413D45;
+    margin-right: 30px;
+}
+
+.p-container {
+    width: auto;
+    margin-right: 30px;
+    overflow: hidden;
+}
+
+.col-left {
+    width: 50%;
+}
+
+.col-right {
+    width: 50%;
+}
+
+.login-btn {
+    background: none;
+	color: inherit;
+	border: 1px solid;
+	padding: 10px;
+    width: 100px;
+    border-radius: 50px;
+	font: inherit;
+	cursor: pointer;
+}
+
+.login-btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.offer-container {
+    margin-top: 50px;
+    box-shadow: 0px 1px 3px rgb(138, 137, 137);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.offer-btn {
+    background: none;
+	color: inherit;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 300;
+}
+
+.offer-btn:hover {
+    color:rgb(138, 137, 137)
+}
+
+.offer-btn:focus {
+    border-bottom: 3px solid rgb(116, 116, 116);
+}
+
+.card-title {
+    margin-top: 10px;
+}
+
+.card-text {
+    margin-top: 10px;
+}
+
+.offer-content {
+    display: hidden;
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 1px 3px rgb(138, 137, 137);
+}
+
+#moodtracker-content {
+    display: show;
+}
+
+#meditation-content {
+    display: none;
+}
+
+#forum-content {
+    display: none;
+}

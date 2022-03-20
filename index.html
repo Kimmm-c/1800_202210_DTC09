@@ -17,143 +17,65 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
-
-    <!-------------------------------------------------------->
-    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-    <!-------------------------------------------------------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-
-
-    <!-- Other libraries go here -->
-
-
-    <!--jQuery Library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Link to styles of your own -->
-    <link type="text/css" href="./css/style.css">
-    <style>
-        body footer {
-            padding-top: 60px;
-        }
-
-        @media (max-width: 980px) {
-            body {
-                padding-top: 0;
-            }
-        }
-
-        nav {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        button {
-            margin: 1%;
-        }
-
-        #features {
-            text-align: center;
-
-        }
-
-        img {
-            height: 50%;
-        }
-    </style>
-
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-
-    <!-- Navigation section -->
-    <header>
-        <nav id="navbarPlaceholder"></nav>
-    </header>
-    <!-- Jumbotron -->
-    <div class="container py-4">
-
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">FRIEND is here for you</h1>
-                <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
-                <a href="./login.html" class="btn btn-info" role="button">Log in</a>
-            </div>
-        </div>
-    </div>
-    <div class="container py-4">
-        <div class="container-fluid py-5">
-            <h1 class="display-6 fw-bold">What we offer:</h1>
-            <div class="card-group">
-                <div class="card">
-                    <img src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        class="card-img-top" alt="Meditation">
-                    <div class="card-body">
-                        <h5 class="card-title">Meditation</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.pexels.com/photos/208147/pexels-photo-208147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        class="card-img-top" alt="Moodtracker">
-                    <div class="card-body">
-                        <h5 class="card-title">Mood Tracker</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                            content.
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.pexels.com/photos/45718/pexels-photo-45718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        class="card-img-top" alt="Journal">
-                    <div class="card-body">
-                        <h5 class="card-title">Journal/Forum</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This card has even longer content than the first to show that equal
-                            height
-                            action.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Footer Nav Bar -->
-    <nav id="footerNavBar"></nav>
+    <header><nav id="navbarPlaceholder"></nav></header>
     
-    <!-- Footer -->
+    <div class="main">
+        <div class="main-container">
+            <div class="col-left">
+                <h2 class="heading-text">Friend is here for you</h2>
+                <div class="p-container">
+                    <p>Sit voluptate id aute et sunt nisi dolore aute enim esse sunt. Velit qui minim cupidatat magna Lorem ipsum enim nisi adipisicing esse velit laboris ea.</p>
+                    <a href="login.html"><button class="login-btn" >Login</button></a>
+                </div>
+            </div>
+            <div class="col-right">
+                <img src="https://images.ctfassets.net/v3n26e09qg2r/4ESH757WrTS9sM8YWzx8a6/67f2bb72243b9503d45ccdb281a873fa/Thumbnail.png?w=600&q=75" width="300px;">
+            </div>
+        </div>
+        <div class="offer-container">
+            <button class="offer-btn" id="moodtracker-btn" onclick="toggleOffer(0)">Moodtracker</button>
+            <button class="offer-btn" id="meditation-btn" onclick="toggleOffer(1)">Meditation</button>
+            <button class="offer-btn" id="forum-btn" onclick="toggleOffer(2)">Forum</button>
+        </div>
+        <div class="offer-content">
+            <div id="moodtracker-content">
+                <img src="https://images.pexels.com/photos/208147/pexels-photo-208147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                        class="card-img-top" alt="Moodtracker">
+                <h5 class="card-title">Moodtracker</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+            <div id="meditation-content">
+                <img src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    class="card-img-top" alt="Meditation">
+                <h5 class="card-title">Meditation</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+            <div id="forum-content">
+                <img src="https://images.pexels.com/photos/45718/pexels-photo-45718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                        class="card-img-top" alt="Journal">
+                <h5 class="card-title">Forum / Journal</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
+    </div>
+    <nav id="footerNavBar"></nav>
     <nav id="footerPlaceholder"></nav>
-
-    <!-- End of .container -->
-
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/script.js"></script>
-
-
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    <!--skeleton for footer and header-->
-
 </body>
-
 </html>

@@ -18,17 +18,13 @@ function sayHello() {
     });
 }
 
-// Search bar for meditation
-function search_song(){
-    let input = document.getElementById('searchbar').value
-    input=input.toLowerCase();
-    let x = document.getElementsByClassName("card-title");
-      
-    for (i = 0; i < x.length; i++) { 
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
-        }
-        else {
-            x[i].style.display="list-item";                 
-        }
-}}
+function toggleOffer(id) {
+    offers = ['#moodtracker-content', '#meditation-content', '#forum-content']
+    if ($(offers[id]).css('display') === 'none') $(offers[id]).show()
+    else return
+
+    offers.splice(id, 1)
+    for (div of offers) {
+        $(div).css('display', 'none')
+    }
+}
