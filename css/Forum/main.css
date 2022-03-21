@@ -1,0 +1,46 @@
+main {
+    display: block;
+}
+
+.titleContainer {
+    margin: 0px auto;
+    max-width: 100%;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.title {
+    font-family: Apercu, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    color: rgb(58, 57, 56);
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-left: 10px;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+.imgContainer {
+    flex-basis: 50%;
+    overflow: hidden;
+    padding-bottom: 66.6667%;
+    position: relative;
+    border-radius: 0.5rem;
+    margin: -40px 35px 0px 35px;
+}
+
+.actualImg {
+    background-color: rgb(203, 203, 204);
+    object-fit: cover;
+    object-position: 50% 50%;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
