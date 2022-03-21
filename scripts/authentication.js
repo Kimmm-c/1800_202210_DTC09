@@ -18,6 +18,7 @@ var uiConfig = {
             console.log("Error adding new user: " + error);
           });
       } else {
+        setUserID(user.uid)
         return true;
       }
       return false;
@@ -52,7 +53,7 @@ function saveInfo() {
     db.collection("user").doc(uid).update({   
         birthdate: $('#birthday').val(),
         gender: $('input[name="gender"]:checked').val(),
-        country:  $(`select[name="country"]:selected`).text(),
+        country:  $('#country').find(':selected').text(),
         profilePic: null,
     })
     .then(() => {
@@ -61,8 +62,5 @@ function saveInfo() {
     })
     .catch(e => console.log(e))
 }
-
-
-
 
 ui.start('#firebaseui-auth-container', uiConfig);
