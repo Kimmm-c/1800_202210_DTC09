@@ -10,7 +10,7 @@ function displayCards() {
                 var rating = doc.data().rating; // get value of the "rating" key
                 var activity = doc.data().Type; // get value of the "Type" key
                 var icon = doc.data().icon;   // get value of the "icon" key
-                
+              
                 let newtaskcard = taskcardTemplate.content.cloneNode(true);
                 //update title and text and image
                 newtaskcard.querySelector('.card-task').innerHTML = task;
