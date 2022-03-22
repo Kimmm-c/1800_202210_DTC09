@@ -1,5 +1,3 @@
-
-
 function addThread() {
     max = 5;
     //define a variable for the collection you want to create in Firestore to populate data
