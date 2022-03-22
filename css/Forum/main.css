@@ -119,8 +119,7 @@ main {
 
 .featureButton {
     background: transparent;
-    border-color: transparent;
-    border-radius: 0px;
+    border: transparent;
     color: rgb(58, 57, 56);
     opacity: 1;
 }
@@ -162,14 +161,17 @@ main {
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;
+    margin-bottom: 30px;
     
 }
 .single_thread{
     border: rgb(58, 57, 56) solid 0.05px;
-    margin: 10px;
+    margin: 15px;
     color: rgb(58, 57, 56);
     font-family: Apercu, sans-serif;
     border-radius: 0.5rem;
-    padding: 10px;
+    padding: 20px;
+    height: 150px;
+    overflow:auto;
 
 }
