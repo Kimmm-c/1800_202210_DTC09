@@ -103,12 +103,12 @@
     </header>
     <!-- Jumbotron -->
     <div class="mood-NavBar">
-        <a href="./mood-calendar.html">
+        <a href="./index.html">
             <button class="btn btn-light btn-outline-secondary" type="button" id="stats-button">
-            Stats </button> </a>
-        <a href="./mood-tracking.html">
-        <button class="btn btn-light btn-outline-secondary" type="button" id="track-button"> Track
-         </button>  </a>
+                Routine </button> </a>
+        <a href="./mood-calendar.html">
+            <button class="btn btn-light btn-outline-secondary" type="button" id="track-button"> Calendar
+            </button> </a>
     </div>
 
     <div class="container py-4">
@@ -157,6 +157,35 @@
                 </div>
             </div>
         </div>
+        <div class="p-2 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <div class="container">
+                    <h2 class="fw-bold">Daily Routine:</h2>
+                    <!-- Here is container for cards  -->
+                    <div class="container">
+                        <div id="TasksCardsGroups" class="row row-cols-auto">
+                            <!-- Templates for general use, not displayed -->
+                            <template id="TasksCardsTemplate">
+                                <div class="card py-2 mx-2" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <div class="top-content">
+                                            <span class="icon-goes-here material-icons-outlined"> icon </span>
+                                            <h5 class="card-task">Card title</h5>
+                                        </div>
+                                        <div class="bottom-content">
+                                            <span class="activity-type"> activity </span>
+                                            <span class="activity-status"> done </span>
+                                            <span class="activity-mood"> mood </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
     <!-- Footer Nav Bar -->
     <nav id="footerNavBar"></nav>
@@ -170,6 +199,7 @@
     <script src="../../scripts/firebaseAPI_TEAM99.js"></script>
     <script src="../../scripts/skeleton.js"></script>
     <script src="../../scripts/script.js"></script>
+    <script src="../../scripts/dailyroutinedisplay.js"> </script>
 
     <!-- Link to scripts of your own -->
 

@@ -60,6 +60,7 @@ button {
 
 .col-right {
     width: 50%;
+    overflow: hidden;
 }
 
 .login-btn {
