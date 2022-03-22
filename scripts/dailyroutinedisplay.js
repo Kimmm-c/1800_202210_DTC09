@@ -19,7 +19,7 @@ function displayCards() {
                 newtaskcard.querySelector('.activity-status').innerHTML = status;
                 newtaskcard.querySelector('.activity-mood').innerHTML = rating;
                 
-                TasksCardsGroup.appendChild(taskcardTemplate)
+                TasksCardsGroup.appendChild(newtaskcard)
             })
         })
 }
