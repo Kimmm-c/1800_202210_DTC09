@@ -50,7 +50,7 @@ function saveJournal() {
             console.log("data added");
             $("#journal_title").val('');
             $("#journal_content").val('');
-        }else{
+        } else {
             console.log("user not signed in")
         }
     })
@@ -67,17 +67,18 @@ function saveThread() {
             console.log("data added");
             $("#thread_title").val('');
             $("#thread_content").val('');
-        }else{
+        } else {
             console.log("user not signed in")
         }
-    })}
+    })
+}
 
 function display_thread_form() {
-            $("#thread").empty();
-            $("#journal").empty();
-            $("#write_journal").css("text-decoration", "none");
-            $(this).css("text-decoration", "underline");
-            $("#thread").append(`
+    $("#thread").empty();
+    $("#journal").empty();
+    $("#write_journal").css("text-decoration", "none");
+    $(this).css("text-decoration", "underline");
+    $("#thread").append(`
     <label for="title"><b>Title:</b></label><br>
     <input type="text" id="thread_title"><br>
     <label for="content"><b>Content:</b></label><br>
@@ -85,14 +86,14 @@ function display_thread_form() {
     <button class="cancel_button">Cancel</button>
     <button id="thread_submit_button" onclick=saveThread()>Post</button>`)
 
-        }
+}
 
 function display_journal_form() {
-            $("#thread").empty();
-            $("#journal").empty();
-            $("#start_thread").css("text-decoration", "none");
-            $(this).css("text-decoration", "underline");
-            $("#journal").append(`
+    $("#thread").empty();
+    $("#journal").empty();
+    $("#start_thread").css("text-decoration", "none");
+    $(this).css("text-decoration", "underline");
+    $("#journal").append(`
     <label for="title"><b>Title:</b></label><br>
     <input type="text" id="journal_title"><br>
     <label for="content"><b>Content:</b></label><br>
@@ -100,13 +101,16 @@ function display_journal_form() {
     <button class="cancel_button">Cancel</button>
     <button id="journal_submit_button" onclick=saveJournal()>Save</button>`)
 
-        }
+}
 function setup() {
-            $("#start_thread").click(display_thread_form);
-            $("#write_journal").click(display_journal_form);
-            //$('#journal_submit_button').click(saveJournal);
-            //$("#thread_submit_button").click(saveThread);
-        }
+    $("#start_thread").click(display_thread_form);
+    $("#write_journal").click(display_journal_form);
+    $("body").on('click', ".cancel_button", () => { 
+        window.location.href = "http://127.0.0.1:5500/html/forum/index.html";
+    })
+    //$('#journal_submit_button').click(saveJournal);
+    //$("#thread_submit_button").click(saveThread);
+}
 $(document).ready(setup);
 
 
