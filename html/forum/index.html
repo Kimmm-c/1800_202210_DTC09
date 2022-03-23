@@ -35,9 +35,13 @@
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/Forum/main.css">
+    <script src="../../scripts/firebaseAPI_TEAM99.js"></script>
 </head>
+
 <body>
-    <header><nav id="navbarPlaceholder"></nav></header>
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
     <section id="main">
         <!-- <div style="margin: 10px;"></div>
         <button><a href="./forum/journal.html">Write You Journal</a></button>
@@ -56,13 +60,40 @@
         <div class="mainContainer">
             <div class="imgContainer">
                 <img src="https://picsum.photos/2000" class="actualImg">
-            </div> 
+            </div>
+        </div>
+        <div class="featureContainer">
+            <div class="featureBox">
+                <div class="featuredBar">Featured</div>
+                <div class="featureTitle">
+                    <h2 class="featureHeader2">Share your story</h2>
+                </div>
+                <ul class="listContainer">
+                    <li><button id="start_thread" selected='false' class="featureButton">Start a Thread </button>
+                    </li>
+                    |
+                    <li><button id="write_journal" selected='true' class="featureButton">Write a Journal</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="forms">
+            <div id="thread">
+
+            </div>
+            <div id="journal">
+
+            </div>
+        </div>
+        <div class="thread_render">
+
         </div>
     </section>
     <nav id="footerNavBar"></nav>
     <nav id="footerPlaceholder"></nav>
-    <script src="../../scripts/firebaseAPI_TEAM99.js"></script>
     <script src="../../scripts/skeleton.js"></script>
     <script src="../../scripts/script.js"></script>
+    <script src="../../scripts/forum.js"></script>
 </body>
+
 </html>
