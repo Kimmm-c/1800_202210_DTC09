@@ -40,55 +40,8 @@
 
     <!-- Link to styles of your own -->
     <link type="text/css" href="../css/style.css">
-    <style>
-        #week-report {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: baseline;
-
-        }
-
-        #week-report h6 {
-            text-align: center;
-        }
-
-        #week-report span {
-            margin-top: 1em;
-            text-align: center;
-        }
-
-        .p-2 h3 {
-            margin: 1%;
-        }
-
-        .mood-NavBar {
-            box-sizing: border-box;
-            width: 50%;
-            background-color: rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            margin: auto;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            padding: 5px;
-
-            /* border-radius: 100px; */
-        }
-
-        .mood-NavBar button {
-            /* border-radius: 100px; */
-            padding: 10px;
-            margin: 10px;
-            border: none;
-            width: 30%;
-        }
-
-        .mood-NavBar a {
-            text-decoration: none;
-        }
-    </style>
-
+    <link rel="stylesheet" href="../../css/Moodtracker/index.css">
+    <link rel="stylesheet" href="../../css/Moodtracker/indexcards.css">
 </head>
 
 <body>
@@ -166,10 +119,10 @@
                         <div id="TasksCardsGroups" class="row row-cols-auto">
                             <!-- Templates for general use, not displayed -->
                             <template id="TasksCardsTemplate">
-                                <div class="card py-2 mx-2" style="width: 18rem;">
+                                <div class="card py-2 mx-2" style="width: 100%;">
                                     <div class="card-body">
                                         <div class="top-content">
-                                            <span class="icon-goes-here material-icons-outlined"> icon </span>
+                                            <span class="icon-goes-here material-icons"> icon </span>
                                             <h5 class="card-task">Card title</h5>
                                         </div>
                                         <div class="bottom-content">
