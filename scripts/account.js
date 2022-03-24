@@ -1,4 +1,4 @@
-function populateAccount() {
+    function populateAccount() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             currentUser = db.collection("user").doc(user.uid);
