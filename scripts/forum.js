@@ -1,33 +1,51 @@
-db.collection("thread").get().then((data) => {
-    data.docs.forEach(doc => {
-        renderThread(doc.data(), doc.id);
-    });
+// db.collection("thread").get().then((data) => {
+//     data.docs.forEach(doc => {
+//         renderThread(doc.data(), doc.id);
+//     });
+// })
+
+db.collection("thread").onSnapshot(snapshot => {
+    //console.log(snapshot.docChanges());
+    realtime_thread = snapshot.docChanges();
+    realtime_thread.forEach(change => {
+        if (change.type == 'added') {
+            //console.log(change.doc.data());
+            console.log(change.type);
+            console.log(change.doc.id);
+            renderThread(change.doc.data(), change.doc.id);
+        } else if (change.type == 'removed') {
+            thread = document.getElementById(change.doc.id);
+            //     console.log(thread);
+            thread.remove();
+            //console.log(change.type);
+        }
+    })
 })
 
 function renderThread(data, data_id) {
     //console.log(data);
     //console.log(data.title);
     //console.log(data.details);
-    firebase.auth().onAuthStateChanged(user =>{
-    //console.log(user.uid);
-    //console.log(data.userID);
-    if (user.uid == data.userID) {
-        $(".thread_render").append(`<div class="single_thread" id=${data_id}>
+    firebase.auth().onAuthStateChanged(user => {
+        //console.log(user.uid);
+        //console.log(data.userID);
+        if (user.uid == data.userID) {
+            $(".thread_render").append(`<div class="single_thread" id=${data_id}>
         <h5><b>${data.title}</b></h5>
         <button class="thread_buttons edit_post">Edit post</button><button class="thread_buttons delete_post">Delete post</button>
         <p>${data.content}</p></div>`)
-    } else {
-        $(".thread_render").append(`<div class="single_thread">
+        } else {
+            $(".thread_render").append(`<div class="single_thread">
         <h5><b>${data.title}</b></h5>
         <button class="thread_buttons report_post">Report</button>
         <p>${data.content}</p></div>`)
-    }
-})}
+        }
+    })
+}
 
 //Last update: ${data.last_updated.toDate()}
 function writeReview() {
     let Description = document.getElementById("description").value;
-    //console.log(Title, Level, Season, Description, Flooded, Scrambled);
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             var currentUser = db.collection("user").doc(user.uid)
@@ -117,8 +135,8 @@ function display_journal_form() {
 
 }
 
-function deleteThread(){
-    threadID=$(this).parent().attr("id");
+function deleteThread() {
+    threadID = $(this).parent().attr("id");
     db.collection("thread").doc(threadID).delete();
 }
 
@@ -129,7 +147,7 @@ function setup() {
         window.location.href = "index.html";
     })
     $("#delete_post").click(deleteThread);
-    $("body").on("click",".thread_buttons",deleteThread);
+    $("body").on("click", ".thread_buttons", deleteThread);
     //$('#journal_submit_button').click(saveJournal);
     //$("#thread_submit_button").click(saveThread);
 }
