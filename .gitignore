@@ -2,5 +2,4 @@
 *.logs
 node_modules/
 images/svg/
-firebaseAPI_TEAM99.js
 .vscode
