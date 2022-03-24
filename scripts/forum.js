@@ -32,7 +32,8 @@ function renderThread(data, data_id) {
         if (user.uid == data.userID) {
             $(".thread_render").append(`<div class="single_thread" id=${data_id}>
         <h5><b>${data.title}</b></h5>
-        <button class="thread_buttons edit_post">Edit post</button><button class="thread_buttons delete_post">Delete post</button>
+        <button class="thread_buttons edit_post">Edit post</button>
+        <button class="thread_buttons delete_post">Delete post</button>
         <p>${data.content}</p></div>`)
         } else {
             $(".thread_render").append(`<div class="single_thread">
@@ -135,8 +136,20 @@ function display_journal_form() {
 
 }
 
+function display_delete_modal() {
+    $(this).parent().append(`<div class="delete_modal" id="delete_modal">
+    <div class="modal_content">
+    <h3><b>Delete Post</b></h3>
+    <p>Are you sure you want to delete this post?</p>
+    <button id="cancel_delete" onclick="document.getElementById('delete_modal').remove()">Cancel</button>
+    <button id="confirm_delete" class="confirm_delete">Delete</button>
+    </div></div>`)
+
+}
+
 function deleteThread() {
-    threadID = $(this).parent().attr("id");
+    //console.log($(this).parent().parent().parent().attr("id"));
+    threadID = $(this).parent().parent().parent().attr("id");
     db.collection("thread").doc(threadID).delete();
 }
 
@@ -146,8 +159,8 @@ function setup() {
     $("body").on('click', ".cancel_button", () => {
         window.location.href = "index.html";
     })
-    $("#delete_post").click(deleteThread);
-    $("body").on("click", ".thread_buttons", deleteThread);
+    $("body").on("click", ".delete_post", display_delete_modal);
+    $("body").on("click", ".confirm_delete", deleteThread);
     //$('#journal_submit_button').click(saveJournal);
     //$("#thread_submit_button").click(saveThread);
 }

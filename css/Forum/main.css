@@ -186,3 +186,36 @@ main {
     border: rgb(58, 57, 56) solid 0.05px;
     margin: 2px;
 }
+
+.delete_modal{
+    /* display: none; */
+    height: 200px;
+    width: 500px;
+    border-radius: 0.5rem;;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 25%;
+    top:100px;
+    background-color: rgb(255, 255, 255);
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+}
+
+.modal_content{
+    margin: 30px;
+}
+
+.modal_content button{
+    border-radius: 0.5rem;
+    border: rgb(58, 57, 56) solid 0.05px;
+    float:right;
+    margin: 2px;
+}
+
+.modal_content button#cancel_delete{
+    background-color: transparent;
+}
+
+.modal_content button#confirm_delete{
+    background-color: rgb(214, 95, 95);
+    color: white;
+}
