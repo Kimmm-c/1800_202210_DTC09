@@ -1,0 +1,18 @@
+.card{
+    width: 100%;
+}
+
+.icon-goes-here {
+    float: right;
+    border: 1px solid beige;
+    background-color: aqua;
+    padding: 0.5em;
+}
+
+.bottom-content span{
+
+}
+
+.activity-mood {
+    float: right;
+}
