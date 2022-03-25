@@ -1,0 +1,47 @@
+.p-2 h3 {
+    margin: 1%;
+}
+
+.mood-NavBar {
+    box-sizing: border-box;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 5px;
+
+    /* border-radius: 100px; */
+}
+
+.mood-NavBar button {
+    /* border-radius: 100px; */
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    width: 30%;
+}
+
+.mood-NavBar a {
+    text-decoration: none;
+}
+
+.mood-labels {
+    display: block;
+}
+
+#section {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.response_button {
+    margin: 3%
+}
+
+.material-icons{
+    font-size: 200px;
+}

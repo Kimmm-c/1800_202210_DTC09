@@ -40,55 +40,8 @@
 
     <!-- Link to styles of your own -->
     <link type="text/css" href="../css/style.css">
-    <style>
-        #week-report {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: baseline;
-
-        }
-
-        #week-report h6 {
-            text-align: center;
-        }
-
-        #week-report span {
-            margin-top: 1em;
-            text-align: center;
-        }
-
-        .p-2 h3 {
-            margin: 1%;
-        }
-
-        .mood-NavBar {
-            box-sizing: border-box;
-            width: 50%;
-            background-color: rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            margin: auto;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            padding: 5px;
-
-            /* border-radius: 100px; */
-        }
-
-        .mood-NavBar button {
-            /* border-radius: 100px; */
-            padding: 10px;
-            margin: 10px;
-            border: none;
-            width: 30%;
-        }
-
-        .mood-NavBar a {
-            text-decoration: none;
-        }
-    </style>
-
+    <link rel="stylesheet" href="../../css/Moodtracker/index.css">
+    <link rel="stylesheet" href="../../css/Moodtracker/indexcards.css">
 </head>
 
 <body>
@@ -104,16 +57,16 @@
     <!-- Jumbotron -->
     <div class="mood-NavBar">
         <a href="./index.html">
-            <button class="btn btn-light btn-outline-secondary" type="button" id="stats-button">
+            <button class="btn btn-outline-success btn-outline-success" type="button" id="stats-button">
                 Routine </button> </a>
         <a href="./mood-calendar.html">
-            <button class="btn btn-light btn-outline-secondary" type="button" id="track-button"> Calendar
+            <button class="btn btn-outline-success btn-outline-success" type="button" id="track-button"> Calendar
             </button> </a>
     </div>
 
     <div class="container py-4">
 
-        <div class="p-2 mb-4 bg-light rounded-3">
+        <div class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">How have you been?</h1>
                 <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -122,7 +75,7 @@
             </div>
         </div>
 
-        <div class="p-2 mb-4 bg-light rounded-3">
+        <!-- <div class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
             <h3> Daily Report: </h3>
             <div class="container-fluid py-5" id="week-report">
                 <div class="card" style="width: 19%;">
@@ -156,36 +109,34 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="p-2 mb-4 bg-light rounded-3">
+        </div> -->
+        <div id="moodCard" class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
             <div class="container-fluid py-5">
                 <div class="container">
-                    <h2 class="fw-bold">Daily Routine:</h2>
-                    <!-- Here is container for cards  -->
-                    <div class="container">
-                        <div id="TasksCardsGroups" class="row row-cols-auto">
-                            <!-- Templates for general use, not displayed -->
-                            <template id="TasksCardsTemplate">
-                                <div class="card py-2 mx-2" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <div class="top-content">
-                                            <span class="icon-goes-here material-icons-outlined"> icon </span>
-                                            <h5 class="card-task">Card title</h5>
-                                        </div>
-                                        <div class="bottom-content">
-                                            <span class="activity-type"> activity </span>
-                                            <span class="activity-status"> done </span>
-                                            <span class="activity-mood"> mood </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
+                    <h3>Today: <span id="today-date"></span></h3>
+                    <h4> How are you feeling? </h4>
                 </div>
-
+                <section id="choices">
+                    <button class="btn-lg btn-outline-success response_button" id="splendid" value="5">
+                        <span class="material-icons"> sentiment_very_satisfied </span>
+                        <span class="mood-labels"> Splendid </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="good" value="4">
+                        <span class="material-icons"> sentiment_satisfied_alt </span>
+                        <span class="mood-labels"> Good </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="meh" value="3">
+                        <span class="material-icons"> sentiment_satisfied </span>
+                        <span class="mood-labels"> Meh </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="bad" value="2">
+                        <span class="material-icons"> sentiment_dissatisfied </span>
+                        <span class="mood-labels"> Bad </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="awful" value="1">
+                        <span class="material-icons"> sentiment_very_dissatisfied </span>
+                        <span class="mood-labels"> Awful </span></button>
+                </section>
             </div>
+            <button id="next-button" type="button" class="btn btn-outline-success" onclick="getMood(moodRating)">Submit</button>
         </div>
+    </div>
     </div>
     <!-- Footer Nav Bar -->
     <nav id="footerNavBar"></nav>
@@ -199,7 +150,7 @@
     <script src="../../scripts/firebaseAPI_TEAM99.js"></script>
     <script src="../../scripts/skeleton.js"></script>
     <script src="../../scripts/script.js"></script>
-    <script src="../../scripts/dailyroutinedisplay.js"> </script>
+    <script src="../../scripts/dailymood.js"> </script>
 
     <!-- Link to scripts of your own -->
 
