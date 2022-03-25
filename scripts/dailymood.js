@@ -18,8 +18,6 @@ firebase.auth().onAuthStateChanged(user => {
 
 function getMood(moodResponse) {
     let today = document.getElementById("today-date").innerHTML
-    console.log(moodResponse)
-    console.log(currentUser)
     currentUser.collection("dailymood").add({
         rating: moodResponse,
         date: today
@@ -29,6 +27,8 @@ function getMood(moodResponse) {
         .catch((error) => {
             console.log("Unable to add daily rating" + error)
         })
+    
+        checkifDone()
 }
 
 function currentdate() {
@@ -44,22 +44,19 @@ function currentdate() {
 
 $(".response_button").click(function(){
     moodRating = $(this).val();
-    console.log(moodRating)
 })
 
-// function checkifDone (){
-//     today = document.getElementById("today-date").innerHTML
-//     currentUser.collection("dailymood").get()
-//     .then(AllRating => {
-//         AllRating.forEach(doc => {
-//             var day = doc.data().date;
-
-//             if (day === today) {
-//                 $("#choices").empty
-
-//             } else {
-//                 console.log("Haven't done yet")
-//             }
-//         })
-//     })
-// }
+function checkifDone (){
+    today = document.getElementById("today-date").innerHTML
+    currentUser.collection("dailymood").get()
+    .then(allRating => {
+        allRating.forEach(doc => {
+            day = doc.data().date
+            
+            if (today === day) {
+                $("#moodCard").empty()
+                moodDisabler = $("#moodCard").html(`<h3> Thank you for sharing, see you tomorrow! </h3`)
+            }
+        })
+    })
+}

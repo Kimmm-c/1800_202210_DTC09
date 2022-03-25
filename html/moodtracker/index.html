@@ -57,16 +57,16 @@
     <!-- Jumbotron -->
     <div class="mood-NavBar">
         <a href="./index.html">
-            <button class="btn btn-light btn-outline-secondary" type="button" id="stats-button">
+            <button class="btn btn-outline-success btn-outline-success" type="button" id="stats-button">
                 Routine </button> </a>
         <a href="./mood-calendar.html">
-            <button class="btn btn-light btn-outline-secondary" type="button" id="track-button"> Calendar
+            <button class="btn btn-outline-success btn-outline-success" type="button" id="track-button"> Calendar
             </button> </a>
     </div>
 
     <div class="container py-4">
 
-        <div class="p-2 mb-4 bg-light rounded-3">
+        <div class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">How have you been?</h1>
                 <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="p-2 mb-4 bg-light rounded-3">
+        <!-- <div class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
             <h3> Daily Report: </h3>
             <div class="container-fluid py-5" id="week-report">
                 <div class="card" style="width: 19%;">
@@ -109,27 +109,32 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="p-2 mb-4 bg-light rounded-3">
+        </div> -->
+        <div id="moodCard" class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
             <div class="container-fluid py-5">
                 <div class="container">
                     <h3>Today: <span id="today-date"></span></h3>
                     <h4> How are you feeling? </h4>
                 </div>
                 <section id="choices">
-                    <button class="btn-lg btn-success m-3 response_button" id="splendid" value="5">
-                        <span class="material-icons"> sentiment_very_satisfied </span></button>
-                    <button class="btn-lg btn-success m-3 response_button" id="good" value="4">
-                        <span class="material-icons"> sentiment_satisfied_alt </span></button>
-                    <button class="btn-lg btn-success m-3 response_button" id="meh" value="3">
-                        <span class="material-icons"> sentiment_satisfied </span></button>
-                    <button class="btn-lg btn-success m-3 response_button" id="bad" value="2">
-                        <span class="material-icons"> sentiment_dissatisfied </span></button>
-                    <button class="btn-lg btn-success m-3 response_button" id="awful" value="1">
-                        <span class="material-icons"> sentiment_very_dissatisfied </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="splendid" value="5">
+                        <span class="material-icons"> sentiment_very_satisfied </span>
+                        <span class="mood-labels"> Splendid </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="good" value="4">
+                        <span class="material-icons"> sentiment_satisfied_alt </span>
+                        <span class="mood-labels"> Good </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="meh" value="3">
+                        <span class="material-icons"> sentiment_satisfied </span>
+                        <span class="mood-labels"> Meh </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="bad" value="2">
+                        <span class="material-icons"> sentiment_dissatisfied </span>
+                        <span class="mood-labels"> Bad </span></button>
+                    <button class="btn-lg btn-outline-success response_button" id="awful" value="1">
+                        <span class="material-icons"> sentiment_very_dissatisfied </span>
+                        <span class="mood-labels"> Awful </span></button>
                 </section>
             </div>
-            <button id="next-button" type="button" class="btn btn-success" onclick="getMood(moodRating)">Submit</button>
+            <button id="next-button" type="button" class="btn btn-outline-success" onclick="getMood(moodRating)">Submit</button>
         </div>
     </div>
     </div>

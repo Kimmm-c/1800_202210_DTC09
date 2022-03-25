@@ -27,3 +27,21 @@
 .mood-NavBar a {
     text-decoration: none;
 }
+
+.mood-labels {
+    display: block;
+}
+
+#section {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.response_button {
+    margin: 3%
+}
+
+.material-icons{
+    font-size: 200px;
+}
