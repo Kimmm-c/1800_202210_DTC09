@@ -131,9 +131,13 @@ main {
 .forms {
     color: rgb(58, 57, 56);
     font-family: Apercu, sans-serif;
-    margin-left: 50px;
     margin-top: 0px;
     margin-bottom:20px;
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #thread_submit_button {
@@ -142,6 +146,7 @@ main {
     background: rgb(126, 199, 146);
     border-radius: 0.5rem;
     margin-top: 10px;
+    border-width:0.25px;
 }
 
 .cancel_button{
@@ -159,6 +164,7 @@ main {
     background: rgb(126, 199, 146);
     border-radius: 0.5rem;
     margin-top: 10px;
+    border-width:0.25px;
 }
 
 .thread_render{ 
@@ -169,8 +175,6 @@ main {
     background-color: rgb(226, 226, 226);
     height:860px;
     overflow:auto;
-    
-    
 }
 .single_thread{
     margin: 15px;
@@ -190,12 +194,12 @@ main {
 .delete_modal{
     /* display: none; */
     height: 200px;
-    width: 500px;
     border-radius: 0.5rem;;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 25%;
+    /* left: 25%; */
     top:100px;
+    right:2%;
     background-color: rgb(255, 255, 255);
     box-shadow:5px 5px 5px rgb(180, 180, 180);
 }
@@ -219,3 +223,26 @@ main {
     background-color: rgb(214, 95, 95);
     color: white;
 }
+
+#edit_form{
+    color: rgb(58, 57, 56);
+    font-family: Apercu, sans-serif;
+    margin-top: 0px;
+    margin-bottom:20px;
+    padding:10px;
+    border-radius: 0.5rem;;
+    position: fixed; 
+    z-index: 1;
+    top:100px;
+    right:3%;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    background-color: rgb(255, 255, 255);
+}
+
+#edit_form button{
+    border-radius: 0.5rem;
+    border-width:0.25px;
+    margin-top:2px;
+    background-color: transparent;
+}
+
