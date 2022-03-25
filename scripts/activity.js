@@ -85,5 +85,5 @@ function likeToggle(activityID) {
 }
 
 populateSection();
-//fetchQuote();
+fetchQuote();
 createTitle();
