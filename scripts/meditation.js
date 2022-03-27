@@ -1,17 +1,25 @@
-function populateRecent() {
+let uid = localStorage.getItem('uid')
+
+
+async function populateRecent() {
     let recentTab = document.getElementById('recent');
-    
-    if (recentTab.getAttribute('selected') == 'false') return;
+    if (recentTab.className == 'buttonInactive') return;
 
     let activityCardTemplate = document.getElementById("activityCardTemplate");
     let activityCardGroup = document.getElementById("activityCardGroup");
-
-    let activityCard = activityCardTemplate.content.cloneNode(true);
+    let savedActivity = await db.collection('meditation').get().then()
     
-    activityCard.querySelector('.cardTitle').innerHTML = 'Hello';  
-    activityCard.querySelector('.activityLength').innerHTML = 'Gang';
-    activityCard.querySelector('img').src = `https://picsum.photos/${getRandInt(200, 299)}/200/`; //will change later
-    activityCardGroup.appendChild(activityCard);
+    savedActivity.forEach(data => {
+        if (!data.data().bookmarks.includes(uid)) return;
+        else {
+            let activityCard = activityCardTemplate.content.cloneNode(true);
+            activityCard.querySelector('.cardTitle').innerHTML = data.data().songName;  
+            activityCard.querySelector('.cardTitle').onclick = () => console.log(data.data().songName)
+            activityCard.querySelector('.activityLength').innerHTML = data.data().description;
+            activityCard.querySelector('img').src = `https://picsum.photos/${getRandInt(200, 299)}/200/`;
+            activityCardGroup.appendChild(activityCard);
+        }
+    })
 };
 
 
@@ -35,6 +43,7 @@ function setActivityData(element) {
     localStorage.setItem('activityName', element)
 }
 
+
 function getRandInt(min, max) {
     return Math.floor((Math.random() * max) + min);
 };
@@ -45,21 +54,23 @@ function clickTab() {
     let featuredTab = document.getElementById("featured");
 
     recentTab.addEventListener("click", () => {
+        if (recentTab.className === 'buttonActive') return
         featuredTab.className = 'buttonInactive'
         recentTab.className = 'buttonActive'
-        featuredTab.setAttribute('selected', 'false')
-        recentTab.setAttribute('selected', 'true')
+        $('#activityCardGroup').empty();
+        populateRecent();
     });
 
     featuredTab.addEventListener("click", () => {
+        if (featuredTab.className === 'buttonActive') return
         featuredTab.className = 'buttonActive'
         recentTab.className = 'buttonInactive'
-        featuredTab.setAttribute('selected', 'true')
-        recentTab.setAttribute('selected', 'false')
+        $('#activityCardGroup').empty()
+        populateFeatured();
     });
 };
 
 
-
 clickTab();
 populateFeatured();
+populateRecent();
