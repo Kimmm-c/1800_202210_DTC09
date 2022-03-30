@@ -53,7 +53,7 @@ function renderThread(data, data_id) {
         <button class="thread_buttons report_post">Report</button>
         <p>${data.content}</p>
         <hr>
-        <div><button class="comment_section" data="${data_id}">Comment</button></div></div>`)
+        <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
         }
     })
     
@@ -197,7 +197,8 @@ function updateThread(){
     $(this).parent().remove();
 }
 
-function render_comments(){
+function save_to_storage(){
+    //console.log('testing');
     localStorage.setItem("threadID", $(this).attr("data"));
 }
 
@@ -211,7 +212,7 @@ function setup() {
     $("body").on("click", ".confirm_delete", deleteThread);
     $("body").on("click", ".edit_post", display_edit_form);
     $("body").on("click", ".update_thread", updateThread);
-    $("body").on("click", ".comment_section", render_comments);
+    $("body").on("click", ".comment_section", save_to_storage);
     //$("#thread_submit_button").click(saveThread);
 }
 $(document).ready(setup);

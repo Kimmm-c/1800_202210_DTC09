@@ -256,6 +256,8 @@ main {
     border: none;
     text-decoration:underline;
     float: right;
+    color: rgb(58, 57, 56);
+    font-family: Apercu, sans-serif;
 }
 
 .thread_box{
@@ -263,7 +265,7 @@ main {
 }
 
 .comment{
-    padding: 20px;
+    padding-left: 20px;
 }
 
 #comment_field button{
@@ -272,4 +274,17 @@ main {
     background: rgb(126, 199, 146);
     border-radius: 0.5rem;
     border-width:0.25px;
+}
+
+.comment_div{
+    border-radius: 0.9rem;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+    width:fit-content;
+    margin-top: 10px;
+}
+
+#comment_field input{
+    border-radius: 0.9rem;
+    border-width: 0.25px;
 }
