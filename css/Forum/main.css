@@ -193,7 +193,7 @@ main {
 
 .delete_modal{
     /* display: none; */
-    height: 200px;
+    height: 200px !important;
     border-radius: 0.5rem;;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -237,6 +237,7 @@ main {
     right:3%;
     box-shadow:5px 5px 5px rgb(180, 180, 180);
     background-color: rgb(255, 255, 255);
+    height: 390px;
 }
 
 #edit_form button{
@@ -246,3 +247,29 @@ main {
     background-color: transparent;
 }
 
+.single_thread div{
+    height:20px;
+}
+
+.comment_section{
+    background-color: transparent;
+    border: none;
+    text-decoration:underline;
+    float: right;
+}
+
+.thread_box{
+    padding: 20px;
+}
+
+.comment{
+    padding: 20px;
+}
+
+#comment_field button{
+    color: rgb(255, 255, 255);
+    font-family: Apercu, sans-serif;
+    background: rgb(126, 199, 146);
+    border-radius: 0.5rem;
+    border-width:0.25px;
+}

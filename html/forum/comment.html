@@ -34,134 +34,35 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="../../css/Forum/main.css">
     <script src="../../scripts/firebaseAPI_TEAM99.js"></script>
-    <script src="../../scripts/script.js"></script>
-    <script src="../../scripts/forum.js"></script>
-    <style>
-        .footerNav {
-            box-sizing: border-box;
-            width: 300px;
-            background-color: rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            margin: auto;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            padding: 20px 20px 20px 20px;
-            border-radius: 100px;
-        }
-
-        .footerNav button {
-            border-radius: 100px;
-            padding: 10px;
-            margin-left: 10px;
-        }
-
-        .footerNav button:hover {
-            background: grey;
-        }
-    </style>
-
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container">
-            <a class="navbar-brand" href="#"><b>Friend</b></a>
-            <div class="dropdown">
-                <button class="btn text-dark dropdown-toggle" type="button" id="dropdownMenu" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    What we offer
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Mood Tracker</button></li>
-                    <li><button class="dropdown-item" type="button">Meditation</button></li>
-                    <li><button class="dropdown-item" type="button">Forum</button></li>
-                </ul>
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
+    <section id="main">
+        <div class="thread_box">
+        
+        </div>
+        <div class="comment">
+            <hr>
+            <div id="comment_box">
+
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <button class="btn btn-lg material-icons text-dark" type="button">account_circle</button>
-                    </li>
-                </ul>
+            <div id="comment_field">
+                <input id="comment_content">
+                <button id="post_comment">Post</button>
             </div>
         </div>
-    </nav>
-
-    <!-- the body of your page goes here -->
-    <section style="margin:20px;">
-    <h3>Respond to thread: <span id="HikeName"></span></h3>
-    <form>
-
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Write your reply:</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
-        </div>
-        <br>
-
-        <br>
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writeReview()">Submit</button>
-        </div>
-        </div>
-    </form>
     </section>
-
-
+    <nav id="footerNavBar"></nav>
+    <nav id="footerPlaceholder"></nav>
+    <script src="../../scripts/skeleton.js"></script>
+    <script src="../../scripts/forum-comment.js"></script>
+    <!-- <script src="../../scripts/script.js"></script> -->
+    <!-- <script src="../../scripts/forum.js"></script> -->
 </body>
-<footer class="bg-dark text-white text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm m-4 mx-auto">
-                <ul class="list-unstyled">
-                    <li><a href="#!" class="text-white">About Us</a></li>
-                    <li><a href="#!" class="text-white">Help</a></li>
-                    <li><a href="#!" class="text-white">Q&A</a></li>
-                    <li><a href="#!" class="text-white">Career</a></li>
-                </ul>
-            </div>
-            <div class="col-sm m-4 mx-auto">
-                <ul class="list-unstyled">
-                    <li><a href="#!" class="text-white">Contact Us</a></li>
-                    <li><a href="#!" class="text-white">Location</a></li>
-                    <li><a href="#!" class="text-white">Maps</a></li>
-                </ul>
-            </div>
-            <div class="col-sm m-4 mx-auto">
-                <div class="input-group">
-                    <input class="form-control border" type="search" value="Search" id="searchInput">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footerNav">
-        <button class="btn btn-light btn-outline-secondary" type="button" id="meditateIcon">
-            <a href="../html/meditation.html">
-                <img width="30em" src="../../images/meditation.png" alt="Meditating">
-            </a>
-        </button>
-        <button class="btn btn-light btn-outline-secondary" type="button">
-            <a href="../html/moodtracker.html">
-                <img width="30em" src="../../images/Happy-face.png" alt="Happy-face">
-            </a>
-        </button>
-        <button class="btn btn-light btn-outline-secondary" type="button">
-            <a href="../../html/forum.html">
-                <img width="30em" src="../../images/feather.png" alt="Feather">
-            </a>
-        </button>
-    </div>
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.1);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">Friends Inc.</a>
-    </div>
-</footer>
 
 </html>

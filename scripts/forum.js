@@ -3,23 +3,25 @@
 //         renderThread(doc.data(), doc.id);
 //     });
 // })
+
+//Get the threads from database in order to render them on Forum page
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         db.collection("thread").orderBy('last_updated').onSnapshot(snapshot => {
             //console.log(snapshot.docChanges());
             realtime_thread = snapshot.docChanges();
-            realtime_thread.forEach(change => {
-                if (change.type == 'added') {
+            realtime_thread.forEach(change => {                        
+                if (change.type == 'added') {                           //if new thread is added
                     //console.log(change.doc.data());
                     console.log(change.type);
                     console.log(change.doc.id);
                     renderThread(change.doc.data(), change.doc.id);
-                } else if (change.type == 'removed') {
+                } else if (change.type == 'removed') {                  //if an existing thread is removed
                     thread = document.getElementById(change.doc.id);
                     //     console.log(thread);
                     thread.remove();
                     //console.log(change.type);
-                } else {
+                } else {                                                //if a thread is modified
                     document.getElementById(change.doc.id).children[0].innerHTML = "<b>"+change.doc.data().title+"</b>";
                     document.getElementById(change.doc.id).children[3].innerHTML = change.doc.data().content;
                 }
@@ -42,14 +44,19 @@ function renderThread(data, data_id) {
         <h5><b>${data.title}</b></h5>
         <button class="thread_buttons edit_post">Edit post</button>
         <button class="thread_buttons delete_post">Delete post</button>
-        <p>${data.content}</p></div>`)
+        <p>${data.content}</p>
+        <hr>
+        <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
         } else {
             $(".thread_render").prepend(`<div class="single_thread">
         <h5><b>${data.title}</b></h5>
         <button class="thread_buttons report_post">Report</button>
-        <p>${data.content}</p></div>`)
+        <p>${data.content}</p>
+        <hr>
+        <div><button class="comment_section" data="${data_id}">Comment</button></div></div>`)
         }
     })
+    
 }
 
 //Last update: ${data.last_updated.toDate()}
@@ -190,6 +197,10 @@ function updateThread(){
     $(this).parent().remove();
 }
 
+function render_comments(){
+    localStorage.setItem("threadID", $(this).attr("data"));
+}
+
 function setup() {
     $("#start_thread").click(display_thread_form);
     $("#write_journal").click(display_journal_form);
@@ -200,6 +211,7 @@ function setup() {
     $("body").on("click", ".confirm_delete", deleteThread);
     $("body").on("click", ".edit_post", display_edit_form);
     $("body").on("click", ".update_thread", updateThread);
+    $("body").on("click", ".comment_section", render_comments);
     //$("#thread_submit_button").click(saveThread);
 }
 $(document).ready(setup);
