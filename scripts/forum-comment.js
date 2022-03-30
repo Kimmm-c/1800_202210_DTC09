@@ -20,6 +20,8 @@ db.collection("thread/" + threadID + "/comments").onSnapshot((snapshot) => {
         }else if (change.type == 'removed'){
             comment = document.getElementById(change.doc.id);
             comment.remove();
+        }else{
+            $(`#${change.doc.id}`).children("p").text(`${change.doc.data().content}`);
         }
     })
 })
@@ -60,7 +62,7 @@ function display_options(){
         db.collection(`thread/${threadID}/comments`).doc(commentID).get().then((doc) =>{
             comment_owner_id = doc.data().userid;
             if (userID == comment_owner_id) {
-                $("#comment_options").html(`<div id="owner_comment_options" data="${commentID}"><span id="edit_comment">Edit</span><hr>
+                $("#comment_options").html(`<div id="owner_comment_options" data="${commentID}"><span class="edit_comment">Edit</span><hr>
                 <span class="delete_comment">Delete</span><hr>
                 <span class="cancel_comment_option">Cancel</span>`)
             } else {
@@ -79,6 +81,31 @@ function delete_comment(){
     $("#comment_options").empty();
 }
 
+function edit_comment(){
+    //console.log('testing');
+    commentID = $(this).parent().attr("data");
+    //x = $(`#${commentID}`).children("p").text();
+    //console.log(x);
+    old_comment = $(`#${commentID}`).children("p").text();
+    console.log(old_comment);
+    $("#comment_options").empty();
+    $("#comment_edit_form").html(`<div id="comment_edit_box"><textarea id="update_comment">${old_comment}</textarea><br>
+    <button class="save_edit_comment" data="${commentID}">Update</button>
+    <button class="cancel_edit_comment" >Cancel</button></div>`)
+}
+
+function update_comment(){
+    commentID = $(this).attr("data");
+    //console.log(commentID);
+    new_comment = $(this).siblings("textarea").val();
+    //console.log(new_comment);
+    db.collection(`thread/${threadID}/comments`).doc(commentID).update({
+        content: new_comment,
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    $("#comment_edit_form").empty();
+}
+
 function setup() {
     $("#post_comment").click(add_comment);
     $("body").on("click", ".comment_div", display_options)
@@ -86,6 +113,11 @@ function setup() {
         $("#comment_options").empty();
     })
     $("body").on("click", ".delete_comment", delete_comment);
+    $("body").on("click", ".edit_comment", edit_comment);
+    $("body").on("click", ".cancel_edit_comment", ()=>{
+        $("#comment_edit_form").empty();
+    })
+    $("body").on("click", ".save_edit_comment", update_comment);
 }
 
 $(document).ready(setup);

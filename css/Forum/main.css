@@ -288,6 +288,7 @@ main {
 #comment_field input{
     border-radius: 0.9rem;
     border-width: 0.25px;
+    width: 80%;
 }
 
 #owner_comment_options{
@@ -301,4 +302,37 @@ main {
     z-index: 1;
     text-align: center;
     padding: 10px;
+}
+
+#comment_edit_box{
+    position: fixed;
+    bottom: 130px;
+    background-color: white;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    border-radius: 0.5rem;
+    width: 90%;
+    padding: 10px;
+    z-index: 1;
+    height: 200px;
+}
+
+#comment_edit_box button{
+    float:right;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: rgb(58, 57, 56);
+    font-family: Apercu, sans-serif;
+    border-width:0.25px;
+    margin:2px;
+}
+
+#comment_edit_box .save_edit_comment{
+    background: rgb(126, 199, 146);
+    color: white;
+}
+
+textarea{
+    width:100%;
+    border-radius: 0.5rem;
+    height: 80%;
 }
