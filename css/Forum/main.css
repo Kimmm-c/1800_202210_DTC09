@@ -184,11 +184,19 @@ main {
     background-color: white;
 }
 
+.single_thread h5{
+    margin-bottom:0px;
+}
+
+.single_thread hr{
+    margin-top:0px;
+}
 .thread_buttons{
     background-color: transparent;
-    border-radius: 0.5rem;
-    border: rgb(58, 57, 56) solid 0.05px;
-    margin: 2px;
+    border:none;
+    color:rgb(104, 104, 104);
+    padding:0px;
+    font-size: 15px;
 }
 
 .delete_modal{
@@ -198,8 +206,8 @@ main {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     /* left: 25%; */
-    top:100px;
-    right:2%;
+    top:200px;
+    width: 80%;
     background-color: rgb(255, 255, 255);
     box-shadow:5px 5px 5px rgb(180, 180, 180);
 }
@@ -233,11 +241,17 @@ main {
     border-radius: 0.5rem;;
     position: fixed; 
     z-index: 1;
-    top:100px;
-    right:3%;
+    bottom: 110px;
+    width: 75%;
     box-shadow:5px 5px 5px rgb(180, 180, 180);
     background-color: rgb(255, 255, 255);
     height: 390px;
+}
+
+#edit_form textarea{
+    border-radius: 0.5rem;
+    border-width:0.25px;
+    width: 100%;
 }
 
 #edit_form button{
@@ -331,7 +345,7 @@ main {
     color: white;
 }
 
-textarea{
+#comment_edit_box textarea{
     width:100%;
     border-radius: 0.5rem;
     height: 80%;

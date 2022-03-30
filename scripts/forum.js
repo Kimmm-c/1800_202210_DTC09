@@ -42,8 +42,9 @@ function renderThread(data, data_id) {
         if (user.uid == data.userID) {
             $(".thread_render").prepend(`<div class="single_thread" id=${data_id}>
         <h5><b>${data.title}</b></h5>
-        <button class="thread_buttons edit_post">Edit post</button>
+        <button class="thread_buttons edit_post">Edit post |</button> 
         <button class="thread_buttons delete_post">Delete post</button>
+        <hr>
         <p>${data.content}</p>
         <hr>
         <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
@@ -51,6 +52,7 @@ function renderThread(data, data_id) {
             $(".thread_render").prepend(`<div class="single_thread">
         <h5><b>${data.title}</b></h5>
         <button class="thread_buttons report_post">Report</button>
+        <hr>
         <p>${data.content}</p>
         <hr>
         <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
@@ -59,31 +61,6 @@ function renderThread(data, data_id) {
     
 }
 
-//Last update: ${data.last_updated.toDate()}
-function writeReview() {
-    let Description = document.getElementById("description").value;
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            var currentUser = db.collection("user").doc(user.uid)
-            var userID = user.uid;
-            //get the document for current user.
-            currentUser.get()
-                .then(userDoc => {
-                    var userEmail = userDoc.data().email;
-                    db.collection("Reply").add({
-                        details: Description,
-
-                    }).then(() => {
-                        window.location.href = "forum.html";
-                    })
-                })
-
-        } else {
-            // No user is signed in.
-        }
-    });
-
-}
 
 function saveJournal() {
     firebase.auth().onAuthStateChanged(user => {
