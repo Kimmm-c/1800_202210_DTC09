@@ -266,6 +266,7 @@ main {
 
 .comment{
     padding-left: 20px;
+    margin-bottom: 20px;
 }
 
 #comment_field button{
@@ -287,4 +288,17 @@ main {
 #comment_field input{
     border-radius: 0.9rem;
     border-width: 0.25px;
+}
+
+#owner_comment_options{
+    position: fixed;
+    bottom: 130px;
+    background-color: white;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    border-radius: 0.5rem;
+    width: 90%;
+    height: fit-content;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
 }

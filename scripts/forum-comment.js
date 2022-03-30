@@ -17,12 +17,15 @@ db.collection("thread/" + threadID + "/comments").onSnapshot((snapshot) => {
     realtime_comment.forEach(change => {
         if (change.type == 'added') {
             render_comments(change.doc.data(), change.doc.id);
+        }else if (change.type == 'removed'){
+            comment = document.getElementById(change.doc.id);
+            comment.remove();
         }
     })
 })
 
 function render_comments(data, data_id) {
-    $("#comment_box").append(`<div class="comment_div"><b>${data.username}</b>
+    $("#comment_box").append(`<div class="comment_div" id="${data_id}"><b>${data.username}</b>
     <p>${data.content}</p></div>`)
 }
 
@@ -48,8 +51,41 @@ function add_comment() {
     })
 }
 
+function display_options(){
+    //console.log('testing');
+    commentID = $(this).attr("id");
+    console.log(commentID);
+    firebase.auth().onAuthStateChanged((user) => {
+        userID = user.uid;
+        db.collection(`thread/${threadID}/comments`).doc(commentID).get().then((doc) =>{
+            comment_owner_id = doc.data().userid;
+            if (userID == comment_owner_id) {
+                $("#comment_options").html(`<div id="owner_comment_options" data="${commentID}"><span id="edit_comment">Edit</span><hr>
+                <span class="delete_comment">Delete</span><hr>
+                <span class="cancel_comment_option">Cancel</span>`)
+            } else {
+                $("#comment_options").append(`<div id="reader_comment_options"><span>Report</span><hr>
+                <span class="cancel_comment_option">Cancel</span>`)
+            }
+        })
+    })
+
+}
+
+function delete_comment(){
+    //console.log('testing');
+    commentID = $(this).parent().attr("data");
+    db.collection(`thread/${threadID}/comments`).doc(commentID).delete();
+    $("#comment_options").empty();
+}
+
 function setup() {
     $("#post_comment").click(add_comment);
+    $("body").on("click", ".comment_div", display_options)
+    $("body").on("click", ".cancel_comment_option", ()=>{
+        $("#comment_options").empty();
+    })
+    $("body").on("click", ".delete_comment", delete_comment);
 }
 
 $(document).ready(setup);

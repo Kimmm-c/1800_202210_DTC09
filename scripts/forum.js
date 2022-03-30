@@ -13,8 +13,8 @@ firebase.auth().onAuthStateChanged(user => {
             realtime_thread.forEach(change => {                        
                 if (change.type == 'added') {                           //if new thread is added
                     //console.log(change.doc.data());
-                    console.log(change.type);
-                    console.log(change.doc.id);
+                    //console.log(change.type);
+                    //console.log(change.doc.id);
                     renderThread(change.doc.data(), change.doc.id);
                 } else if (change.type == 'removed') {                  //if an existing thread is removed
                     thread = document.getElementById(change.doc.id);
@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged(user => {
 function renderThread(data, data_id) {
     //console.log(data);
     //console.log(data.title);
-    //console.log(data.details);
+    //console.log(data.details)
     firebase.auth().onAuthStateChanged(user => {
         //console.log(user.uid);
         //console.log(data.userID);
