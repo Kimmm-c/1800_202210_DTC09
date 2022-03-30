@@ -350,3 +350,16 @@ main {
     border-radius: 0.5rem;
     height: 80%;
 }
+
+#reader_comment_options{
+    position: fixed;
+    bottom: 130px;
+    background-color: white;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    border-radius: 0.5rem;
+    width: 90%;
+    height: fit-content;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+}
