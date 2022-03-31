@@ -13,8 +13,8 @@ firebase.auth().onAuthStateChanged(user => {
             realtime_thread.forEach(change => {                        
                 if (change.type == 'added') {                           //if new thread is added
                     //console.log(change.doc.data());
-                    //console.log(change.type);
-                    //console.log(change.doc.id);
+                    console.log(change.type);
+                    console.log(change.doc.id);
                     renderThread(change.doc.data(), change.doc.id);
                 } else if (change.type == 'removed') {                  //if an existing thread is removed
                     thread = document.getElementById(change.doc.id);
@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(user => {
                     //console.log(change.type);
                 } else {                                                //if a thread is modified
                     document.getElementById(change.doc.id).children[0].innerHTML = "<b>"+change.doc.data().title+"</b>";
-                    document.getElementById(change.doc.id).children[3].innerHTML = change.doc.data().content;
+                    document.getElementById(change.doc.id).children[4].innerHTML = change.doc.data().content;
                 }
             })
         })
