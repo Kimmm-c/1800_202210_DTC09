@@ -142,6 +142,7 @@ function display_delete_modal() {
 function deleteThread() {
     //console.log($(this).parent().parent().parent().attr("id"));
     threadID = $(this).parent().parent().parent().attr("id");
+    //db.collection(`thread/${threadID}/comments`).delete();
     db.collection("thread").doc(threadID).delete();
 }
 
