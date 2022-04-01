@@ -34,6 +34,7 @@ function populateSection() {
                 activityCard.querySelector('.likeBtn').id = 'save-' + activityID
                 activityCard.querySelector('.likeBtn').innerHTML = bookmarked ? '\u2665' : '\u2661' 
                 activityCard.querySelector('.likeBtn').onclick = () => toggleBookmark(activityID)
+                activityCard.querySelector('.arrowBtn').href = 'eachActivity.html?activity=' + songName + `&id=` + activityID
                 activityContainer.appendChild(activityCard)
             })
         })        
@@ -119,6 +120,10 @@ function likeToggle(activityID, status) {
 }
 
 
+function musicPlayer() {
+    $
+}
+
 populateSection();
-//fetchQuote();
 createTitle();
+//fetchQuote();
