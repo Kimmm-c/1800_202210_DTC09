@@ -1,7 +1,7 @@
 let activityName = localStorage.getItem('activityName');
+let uid = localStorage.getItem('uid')
 
-// Populates the title of the activity with the activity 
-// with the name in the local storage
+
 db.collection('meditation').where("activity", "==", activityName)
     .get()
     .then(queryActivity => {
@@ -27,16 +27,53 @@ function populateSection() {
                 var activityID = doc.data().activityID;
                 var description = doc.data().description;
                 var url = doc.data().url;
+                var bookmarked = doc.data().bookmarks.includes(uid)
                 let activityCard = activitySection.content.cloneNode(true);
-                activityCard.querySelector('.likeBtn').setAttribute("id", activityID)
-                activityCard.querySelector('.likeBtn').setAttribute("onclick", `likeToggle(${activityID})`)
                 activityCard.querySelector('.activitySong').innerHTML = songName
                 activityCard.querySelector('.description').innerHTML = description
+                activityCard.querySelector('.likeBtn').id = 'save-' + activityID
+                activityCard.querySelector('.likeBtn').innerHTML = bookmarked ? '\u2665' : '\u2661' 
+                activityCard.querySelector('.likeBtn').onclick = () => toggleBookmark(activityID)
                 activityContainer.appendChild(activityCard)
             })
         })        
 };
  
+
+function toggleBookmark(activityID) {
+    let activityIDRef = db.collection("meditation").doc(activityID)
+    activityIDRef.get().then(data => {
+        if (!data.data().bookmarks.includes(uid)) saveBookmark(activityID)
+        else deleteBookmark(activityID)
+    })
+}
+
+
+function saveBookmark(activityID) {
+    db.collection("meditation").doc(activityID).set({
+            bookmarks: firebase.firestore.FieldValue.arrayUnion(uid)
+        }, {
+            merge: true
+        })
+        .then(function () {
+            console.log(`bookmark ${activityID} added for user (${uid})`);
+            var iconID = 'save-' + activityID;
+            likeToggle(iconID, true)
+        });
+}
+
+
+function deleteBookmark(activityID) {
+    db.collection("meditation").doc(activityID).update({
+        bookmarks: firebase.firestore.FieldValue.arrayRemove(uid)
+    })
+    .then(function () {
+        console.log(`bookmark ${activityID} removed for user (${uid})`);
+        var iconID = 'save-' + activityID;
+        likeToggle(iconID, false)
+    });
+}
+
 
 async function fetchQuote() {
     let response = await fetch(`https://mindfulness-quotes-free.p.rapidapi.com/random`, {
@@ -73,16 +110,14 @@ function createTitle() {
 };
 
 
-function likeToggle(activityID) {
+function likeToggle(activityID, status) {
     const whiteHeart = '\u2661';
     const blackHeart = '\u2665';
     var button = document.getElementById(activityID);
-    
-    console.log(button)
-
-    if (button.innerHTML == whiteHeart) button.innerHTML = blackHeart
+    if (status === true) button.innerHTML = blackHeart
     else button.innerHTML = whiteHeart
 }
+
 
 populateSection();
 //fetchQuote();

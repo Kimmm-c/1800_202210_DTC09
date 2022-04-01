@@ -3,25 +3,27 @@
 //         renderThread(doc.data(), doc.id);
 //     });
 // })
+
+//Get the threads from database in order to render them on Forum page
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         db.collection("thread").orderBy('last_updated').onSnapshot(snapshot => {
             //console.log(snapshot.docChanges());
             realtime_thread = snapshot.docChanges();
-            realtime_thread.forEach(change => {
-                if (change.type == 'added') {
+            realtime_thread.forEach(change => {                        
+                if (change.type == 'added') {                           //if new thread is added
                     //console.log(change.doc.data());
                     console.log(change.type);
                     console.log(change.doc.id);
                     renderThread(change.doc.data(), change.doc.id);
-                } else if (change.type == 'removed') {
+                } else if (change.type == 'removed') {                  //if an existing thread is removed
                     thread = document.getElementById(change.doc.id);
                     //     console.log(thread);
                     thread.remove();
                     //console.log(change.type);
-                } else {
+                } else {                                                //if a thread is modified
                     document.getElementById(change.doc.id).children[0].innerHTML = "<b>"+change.doc.data().title+"</b>";
-                    document.getElementById(change.doc.id).children[3].innerHTML = change.doc.data().content;
+                    document.getElementById(change.doc.id).children[4].innerHTML = change.doc.data().content;
                 }
             })
         })
@@ -33,50 +35,32 @@ firebase.auth().onAuthStateChanged(user => {
 function renderThread(data, data_id) {
     //console.log(data);
     //console.log(data.title);
-    //console.log(data.details);
+    //console.log(data.details)
     firebase.auth().onAuthStateChanged(user => {
         //console.log(user.uid);
         //console.log(data.userID);
         if (user.uid == data.userID) {
             $(".thread_render").prepend(`<div class="single_thread" id=${data_id}>
         <h5><b>${data.title}</b></h5>
-        <button class="thread_buttons edit_post">Edit post</button>
+        <button class="thread_buttons edit_post">Edit post |</button> 
         <button class="thread_buttons delete_post">Delete post</button>
-        <p>${data.content}</p></div>`)
+        <hr>
+        <p>${data.content}</p>
+        <hr>
+        <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
         } else {
             $(".thread_render").prepend(`<div class="single_thread">
         <h5><b>${data.title}</b></h5>
         <button class="thread_buttons report_post">Report</button>
-        <p>${data.content}</p></div>`)
+        <hr>
+        <p>${data.content}</p>
+        <hr>
+        <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
         }
     })
+    
 }
 
-//Last update: ${data.last_updated.toDate()}
-function writeReview() {
-    let Description = document.getElementById("description").value;
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            var currentUser = db.collection("user").doc(user.uid)
-            var userID = user.uid;
-            //get the document for current user.
-            currentUser.get()
-                .then(userDoc => {
-                    var userEmail = userDoc.data().email;
-                    db.collection("Reply").add({
-                        details: Description,
-
-                    }).then(() => {
-                        window.location.href = "forum.html";
-                    })
-                })
-
-        } else {
-            // No user is signed in.
-        }
-    });
-
-}
 
 function saveJournal() {
     firebase.auth().onAuthStateChanged(user => {
@@ -158,6 +142,7 @@ function display_delete_modal() {
 function deleteThread() {
     //console.log($(this).parent().parent().parent().attr("id"));
     threadID = $(this).parent().parent().parent().attr("id");
+    //db.collection(`thread/${threadID}/comments`).delete();
     db.collection("thread").doc(threadID).delete();
 }
 
@@ -190,6 +175,11 @@ function updateThread(){
     $(this).parent().remove();
 }
 
+function save_to_storage(){
+    //console.log('testing');
+    localStorage.setItem("threadID", $(this).attr("data"));
+}
+
 function setup() {
     $("#start_thread").click(display_thread_form);
     $("#write_journal").click(display_journal_form);
@@ -200,6 +190,7 @@ function setup() {
     $("body").on("click", ".confirm_delete", deleteThread);
     $("body").on("click", ".edit_post", display_edit_form);
     $("body").on("click", ".update_thread", updateThread);
+    $("body").on("click", ".comment_section", save_to_storage);
     //$("#thread_submit_button").click(saveThread);
 }
 $(document).ready(setup);

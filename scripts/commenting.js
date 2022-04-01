@@ -26,6 +26,8 @@ function postComment(){
     });
 
 }
+
+
 function saveDraft(){
     //console.log("asdfasfd")
     let draft = document.getElementById("writing_something").value;
@@ -54,4 +56,6 @@ function saveDraft(){
     });
 
 }
+
+
 postComment();

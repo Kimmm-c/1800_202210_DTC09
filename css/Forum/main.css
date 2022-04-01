@@ -184,22 +184,30 @@ main {
     background-color: white;
 }
 
+.single_thread h5{
+    margin-bottom:0px;
+}
+
+.single_thread hr{
+    margin-top:0px;
+}
 .thread_buttons{
     background-color: transparent;
-    border-radius: 0.5rem;
-    border: rgb(58, 57, 56) solid 0.05px;
-    margin: 2px;
+    border:none;
+    color:rgb(104, 104, 104);
+    padding:0px;
+    font-size: 15px;
 }
 
 .delete_modal{
     /* display: none; */
-    height: 200px;
+    height: 200px !important;
     border-radius: 0.5rem;;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     /* left: 25%; */
-    top:100px;
-    right:2%;
+    top:200px;
+    width: 80%;
     background-color: rgb(255, 255, 255);
     box-shadow:5px 5px 5px rgb(180, 180, 180);
 }
@@ -233,10 +241,17 @@ main {
     border-radius: 0.5rem;;
     position: fixed; 
     z-index: 1;
-    top:100px;
-    right:3%;
+    bottom: 110px;
+    width: 75%;
     box-shadow:5px 5px 5px rgb(180, 180, 180);
     background-color: rgb(255, 255, 255);
+    height: 390px;
+}
+
+#edit_form textarea{
+    border-radius: 0.5rem;
+    border-width:0.25px;
+    width: 100%;
 }
 
 #edit_form button{
@@ -246,3 +261,105 @@ main {
     background-color: transparent;
 }
 
+.single_thread div{
+    height:20px;
+}
+
+.comment_section{
+    background-color: transparent;
+    border: none;
+    text-decoration:underline;
+    float: right;
+    color: rgb(58, 57, 56);
+    font-family: Apercu, sans-serif;
+}
+
+.thread_box{
+    padding: 20px;
+}
+
+.comment{
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+#comment_field button{
+    color: rgb(255, 255, 255);
+    font-family: Apercu, sans-serif;
+    background: rgb(126, 199, 146);
+    border-radius: 0.5rem;
+    border-width:0.25px;
+}
+
+.comment_div{
+    border-radius: 0.9rem;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+    width:fit-content;
+    margin-top: 10px;
+}
+
+#comment_field input{
+    border-radius: 0.9rem;
+    border-width: 0.25px;
+    width: 80%;
+}
+
+#owner_comment_options{
+    position: fixed;
+    bottom: 130px;
+    background-color: white;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    border-radius: 0.5rem;
+    width: 90%;
+    height: fit-content;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+#comment_edit_box{
+    position: fixed;
+    bottom: 130px;
+    background-color: white;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    border-radius: 0.5rem;
+    width: 90%;
+    padding: 10px;
+    z-index: 1;
+    height: 200px;
+}
+
+#comment_edit_box button{
+    float:right;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: rgb(58, 57, 56);
+    font-family: Apercu, sans-serif;
+    border-width:0.25px;
+    margin:2px;
+}
+
+#comment_edit_box .save_edit_comment{
+    background: rgb(126, 199, 146);
+    color: white;
+}
+
+#comment_edit_box textarea{
+    width:100%;
+    border-radius: 0.5rem;
+    height: 80%;
+}
+
+#reader_comment_options{
+    position: fixed;
+    bottom: 130px;
+    background-color: white;
+    box-shadow:5px 5px 5px rgb(180, 180, 180);
+    border-radius: 0.5rem;
+    width: 90%;
+    height: fit-content;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+}
