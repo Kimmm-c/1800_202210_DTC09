@@ -1,7 +1,7 @@
 var moodRating; // Global variable for user's submitted mood rating
 var DocUID; // Global variable to get the uid document of current date
 var currentUser; // Global variable for CurrentUser
-var TODAY;
+var TODAY; // Global variable for today's date
 
 firebase.auth().onAuthStateChanged(user => {
     // A function that takes the current user who is login
@@ -11,6 +11,7 @@ firebase.auth().onAuthStateChanged(user => {
         // the following functions are always called when someone is logged in
         currentdate()
         checkifRating()
+        checkifResponse()
     } else {
         // No user is signed in.
         console.log("No user is signed in");
@@ -109,12 +110,12 @@ function decomposing(mood) {
 
 function getResponse() {
     UserResponse = currentUser.collection("dailymood").doc(DocUID);
+    checkifResponse()
     UserResponse.update({
         response: $("#UserResponse").val(),
         question: document.getElementById("question").innerHTML,
     
     })
-    checkifResponse()
 }
 
 function getQoute() {
