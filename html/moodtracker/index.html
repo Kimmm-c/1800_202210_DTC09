@@ -111,30 +111,30 @@
             </div>
         </div> -->
         <div id="moodCard" class="p-2 mb-4 bg-outbtn-outline-success rounded-3">
-            <div class="container-fluid py-5">
+            <div class="container-fluid py-5 moodtracking-card">
                 <div class="container">
                     <h3>Today: <span id="today-date"></span></h3>
                     <h4> How are you feeling? </h4>
                 </div>
                 <section id="choices">
-                    <button class="btn-lg btn-outline-success response_button" id="splendid" value="5">
+                    <button class="btn-lg btn-outline-success response_button" value="Splendid">
                         <span class="material-icons"> sentiment_very_satisfied </span>
                         <span class="mood-labels"> Splendid </span></button>
-                    <button class="btn-lg btn-outline-success response_button" id="good" value="4">
+                    <button class="btn-lg btn-outline-success response_button" value="Good">
                         <span class="material-icons"> sentiment_satisfied_alt </span>
                         <span class="mood-labels"> Good </span></button>
-                    <button class="btn-lg btn-outline-success response_button" id="meh" value="3">
+                    <button class="btn-lg btn-outline-success response_button" value="Meh">
                         <span class="material-icons"> sentiment_satisfied </span>
                         <span class="mood-labels"> Meh </span></button>
-                    <button class="btn-lg btn-outline-success response_button" id="bad" value="2">
+                    <button class="btn-lg btn-outline-success response_button" value="Bad">
                         <span class="material-icons"> sentiment_dissatisfied </span>
                         <span class="mood-labels"> Bad </span></button>
-                    <button class="btn-lg btn-outline-success response_button" id="awful" value="1">
+                    <button class="btn-lg btn-outline-success response_button" value="Awful">
                         <span class="material-icons"> sentiment_very_dissatisfied </span>
                         <span class="mood-labels"> Awful </span></button>
                 </section>
+                <button id="next-button" type="button" class="btn btn-outline-success" onclick="getMood(moodRating)">Submit</button>
             </div>
-            <button id="next-button" type="button" class="btn btn-outline-success" onclick="getMood(moodRating)">Submit</button>
         </div>
     </div>
     </div>
