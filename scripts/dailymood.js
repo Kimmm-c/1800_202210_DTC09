@@ -1,6 +1,7 @@
 var moodRating; // Global variable for user's submitted mood rating
 var DocUID; // Global variable to get the uid document of current date
 var currentUser; // Global variable for CurrentUser
+var TODAY;
 
 firebase.auth().onAuthStateChanged(user => {
     // A function that takes the current user who is login
@@ -10,7 +11,6 @@ firebase.auth().onAuthStateChanged(user => {
         // the following functions are always called when someone is logged in
         currentdate()
         checkifRating()
-        checkifResponse()
     } else {
         // No user is signed in.
         console.log("No user is signed in");
@@ -32,7 +32,7 @@ function getMood(moodResponse) {
             console.log("Unable to add daily rating" + error)
         })
 
-    checkifDone()
+    checkifRating()
 }
 
 function currentdate() {
@@ -53,14 +53,14 @@ $(".response_button").click(function () {
 function checkifRating() {
     // Function that disables the rating card
     // if User has done it for today
-    today = document.getElementById("today-date").innerHTML // Takes the current date
+    TODAY = document.getElementById("today-date").innerHTML // Takes the current date
     currentUser.collection("dailymood").get() // Visits the dailymood subcollection of the user
         .then(allRating => {
             allRating.forEach(doc => { // Visits each document in the subcollection
                 day = doc.data().date  // And takes the date field of the document
                 feeling = doc.data().emotion
 
-                if (today === day) {  // If day is the same as the today, the card will be disabled and instead show a text
+                if (TODAY === day) {  // If day is the same as the today, the card will be disabled and instead show a text
                     DocUID = doc.id
                     $(".moodtracking-card").empty()
                     $(".moodtracking-card").html(`<h3> You rated: ${feeling} </h3> 
@@ -90,6 +90,7 @@ function writeQuestion(mood) {
             $("#question").html(randomQ)
         })
     }
+    
 }
 
 function decomposing(mood) {
@@ -111,7 +112,9 @@ function getResponse() {
     UserResponse.update({
         response: $("#UserResponse").val(),
         question: document.getElementById("question").innerHTML,
+    
     })
+    checkifResponse()
 }
 
 function getQoute() {
@@ -138,14 +141,14 @@ function WriteQoutes() {
 }
 
 function checkifResponse() {
-    today = document.getElementById("today-date").innerHTML // Takes the current date
     currentUser.collection("dailymood").get() // Visits the dailymood subcollection of the user
         .then(allRating => {
             allRating.forEach(doc => { // Visits each document in the subcollection
                 day = doc.data().date  // And takes the date field of the document
                 response = doc.data().response
-
-                if (today === day || response == null) {  // If day is the same as the today, the card will be disabled and instead show a text
+                console.log(response)
+                console.log(day)
+                if (TODAY === day && response !== undefined) {  // If day is the same as the today, the card will be disabled and instead show a text
                     var user_Name;
                     currentUser.get().then(userDoc => {
                         user_Name = userDoc.data().name;
