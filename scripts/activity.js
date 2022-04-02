@@ -120,10 +120,6 @@ function likeToggle(activityID, status) {
 }
 
 
-function musicPlayer() {
-    $
-}
-
 populateSection();
 createTitle();
 //fetchQuote();
