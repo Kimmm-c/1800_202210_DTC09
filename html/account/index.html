@@ -75,6 +75,25 @@
         </div>
         <div class="moodtrackerCard">
             <h1>Moodtracker</h1>
+            <div class="container">
+                <div id="mood-container"></div>
+            </div>
+            <template id="mood-template">
+                <ul class="mood-list" style="list-style-type: none; margin:0; padding: 0; float: left;">
+                    <li class="listLayout">
+                        <img class="activityImg">
+                        <div class="cardBody">
+                            <b><span class="cardTitle"></span></b>
+                            <br>
+                            <span class="mood-updated" style="font-size: small;"></span>
+                            <br>
+                            <span>Emotion: </span><span class="mood-emotion"></span>
+                            <br>
+                            <span>Response: </span><span class="mood-response"></span>
+                        </div>
+                    </li>
+                </ul>
+            </template>
         </div>
         <div class="meditationCard">
             <h1>Meditation</h1>
@@ -116,7 +135,6 @@
             </template>
         </div>
     </div>
-
     <nav id="footerNavBar"></nav>
     <nav id="footerPlaceholder"></nav>
     <script src="../../scripts/firebaseAPI_TEAM99.js"></script>

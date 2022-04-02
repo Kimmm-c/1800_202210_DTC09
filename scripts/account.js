@@ -77,6 +77,22 @@ async function populateForum() {
 }
 
 
+async function populateMood() {
+    let uid = localStorage.getItem('uid')
+    let moodTemplate = document.getElementById("mood-template");
+    let moodCardGroup = document.getElementById("mood-container");
+    let savedData = await db.collection('user').doc(uid).collection('dailymood').get()
+    savedData.forEach(doc => {
+        let moodCard = moodTemplate.content.cloneNode(true)
+        moodCard.querySelector('.cardTitle').innerHTML = doc.data().question
+        moodCard.querySelector('.mood-updated').innerHTML = doc.data().date
+        moodCard.querySelector('.mood-emotion').innerHTML = doc.data().emotion
+        moodCard.querySelector('.mood-response').innerHTML = doc.data().response
+        moodCardGroup.appendChild(moodCard)
+    })
+}
+
+
 $('#pfp-image').click(() => {
     $('#img-upload').click()
 });
@@ -89,3 +105,4 @@ $("#img-upload").change(function () {
 populateAccount();
 populateMeditation();
 populateForum();
+populateMood();
