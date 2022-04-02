@@ -96,7 +96,24 @@
             </template>
         </div>
         <div class="forumCard">
-            <h1>Forum</h1>
+            <h1>Journal Entries</h1>
+            <div class="container">
+                <div id="forum-container"></div>
+            </div>
+            <template id="forum-template">
+                <ul class="forum-list" style="list-style-type: none; margin:0; padding: 0; float: left;">
+                    <li class="listLayout">
+                        <img class="activityImg">
+                        <div class="cardBody">
+                            <b><span class="cardTitle"></span></b>
+                            <br>
+                            <span class="updated" style="font-size: small;"></span>
+                            <br>
+                            <span class="journal-content"></span>
+                        </div>
+                    </li>
+                </ul>
+            </template>
         </div>
     </div>
 
