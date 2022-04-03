@@ -17,10 +17,10 @@ db.collection("thread/" + threadID + "/comments").onSnapshot((snapshot) => {
     realtime_comment.forEach(change => {
         if (change.type == 'added') {
             render_comments(change.doc.data(), change.doc.id);
-        }else if (change.type == 'removed'){
+        } else if (change.type == 'removed') {
             comment = document.getElementById(change.doc.id);
             comment.remove();
-        }else{
+        } else {
             $(`#${change.doc.id}`).children("p").text(`${change.doc.data().content}`);
         }
     })
@@ -53,13 +53,13 @@ function add_comment() {
     })
 }
 
-function display_options(){
+function display_options() {
     //console.log('testing');
     commentID = $(this).attr("id");
     console.log(commentID);
     firebase.auth().onAuthStateChanged((user) => {
         userID = user.uid;
-        db.collection(`thread/${threadID}/comments`).doc(commentID).get().then((doc) =>{
+        db.collection(`thread/${threadID}/comments`).doc(commentID).get().then((doc) => {
             comment_owner_id = doc.data().userid;
             if (userID == comment_owner_id) {
                 $("#comment_options").html(`<div id="owner_comment_options" data="${commentID}"><span class="edit_comment">Edit</span><hr>
@@ -74,14 +74,14 @@ function display_options(){
 
 }
 
-function delete_comment(){
+function delete_comment() {
     //console.log('testing');
     commentID = $(this).parent().attr("data");
     db.collection(`thread/${threadID}/comments`).doc(commentID).delete();
     $("#comment_options").empty();
 }
 
-function edit_comment(){
+function edit_comment() {
     //console.log('testing');
     commentID = $(this).parent().attr("data");
     //x = $(`#${commentID}`).children("p").text();
@@ -94,7 +94,7 @@ function edit_comment(){
     <button class="cancel_edit_comment" >Cancel</button></div>`)
 }
 
-function update_comment(){
+function update_comment() {
     commentID = $(this).attr("data");
     //console.log(commentID);
     new_comment = $(this).siblings("textarea").val();
@@ -109,12 +109,12 @@ function update_comment(){
 function setup() {
     $("#post_comment").click(add_comment);
     $("body").on("click", ".comment_div", display_options)
-    $("body").on("click", ".cancel_comment_option", ()=>{
+    $("body").on("click", ".cancel_comment_option", () => {
         $("#comment_options").empty();
     })
     $("body").on("click", ".delete_comment", delete_comment);
     $("body").on("click", ".edit_comment", edit_comment);
-    $("body").on("click", ".cancel_edit_comment", ()=>{
+    $("body").on("click", ".cancel_edit_comment", () => {
         $("#comment_edit_form").empty();
     })
     $("body").on("click", ".save_edit_comment", update_comment);
