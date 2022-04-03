@@ -2,6 +2,11 @@ main {
     display: block;
 }
 
+.main {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .titleContainer {
     margin: 0px auto;
     max-width: 100%;
@@ -268,3 +273,10 @@ main {
 .backBtn a {
     color: inherit;
 }
+
+.music-container {
+    text-align: center;
+    margin-bottom: 100px;
+}
+  
+ 
