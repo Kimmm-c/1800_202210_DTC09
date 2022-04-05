@@ -195,13 +195,10 @@ main {
     background-color: transparent;
     border:none;
     padding:0px;
+    color: rgb(104, 104, 104);
     font-size: 15px;
 }
 
-.single_thread span{
-    font-size: 15px;
-    color:rgb(104, 104, 104);
-}
 
 .delete_modal{
     /* display: none; */

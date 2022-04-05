@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(user => {
                     //console.log(change.type);
                 } else {                                                //if a thread is modified
                     document.getElementById(change.doc.id).children[0].innerHTML = "<b>" + change.doc.data().title + "</b>";
-                    document.getElementById(change.doc.id).children[6].innerHTML = change.doc.data().content;
+                    document.getElementById(change.doc.id).children[4].innerHTML = change.doc.data().content;
                 }
             })
         })
@@ -35,12 +35,10 @@ firebase.auth().onAuthStateChanged(user => {
 function renderThread(data, data_id) {
     db.collection(`thread/${data_id}/comments`).get().then((comments) => {
         number_of_comment = comments.docs.length;
-
         firebase.auth().onAuthStateChanged(user => {
             if (user.uid == data.userID) {
                 $(".thread_render").prepend(`<div class="single_thread" id=${data_id}>
             <h5><b>${data.title}</b></h5>
-            <span><em>Last updated: ${data.last_updated.toDate()}</em></span><br>
             <button class="thread_buttons edit_post">Edit post |</button> 
             <button class="thread_buttons delete_post">Delete post</button>
             <hr>
@@ -50,7 +48,6 @@ function renderThread(data, data_id) {
             } else {
                 $(".thread_render").prepend(`<div class="single_thread">
             <h5><b>${data.title}</b></h5>
-            <span><em>Last updated: ${data.last_updated.toDate()}</em></span><br>
             <button class="thread_buttons report_post">Report</button>
             <hr>
             <p>${data.content}</p>
@@ -63,26 +60,32 @@ function renderThread(data, data_id) {
 
 
 function saveJournal() {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            db.collection("journals").add({
-                title: $("#journal_title").val(),
-                content: $("#journal_content").val(),
-                userID: user.uid,
-                last_updated: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            console.log("data added");
-            $("#journal_title").val('');
-            $("#journal_content").val('');
-        } else {
-            console.log("user not signed in")
-        }
-    })
+    if ($("#journal_title").val() != '' && $("#journal_content").val() != '') {
+        $(".warning_message").remove();
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                db.collection("journals").add({
+                    title: $("#journal_title").val(),
+                    content: $("#journal_content").val(),
+                    userID: user.uid,
+                    last_updated: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                console.log("data added");
+                $("#journal_title").val('');
+                $("#journal_content").val('');
+            } else {
+                console.log("user not signed in")
+            }
+        })
+    }else{
+        $(".warning_message").remove();
+        $("#journal").append(`<p class="warning_message" style="color: red"><em>Missing title or content.</em></p>`)
+    }
 }
 
 function saveThread() {
-    if ($("#thread_title").val() != '' && $("#thread_content").val() != '') {
-        $("#thread").children().last().remove();
+    if ($("#thread_title").val() != '' && $("#thread_content").val() != '') {  
+        $(".warning_message").remove();
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 db.collection("thread").add({
@@ -99,7 +102,8 @@ function saveThread() {
             }
         })
     } else {
-        $("#thread").append(`<p style="color: red"><em>Missing title or content.</em></p>`)
+        $(".warning_message").remove();
+        $("#thread").append(`<p class="warning_message" style="color: red"><em>Missing title or content.</em></p>`)
     }
 }
 
