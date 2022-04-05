@@ -194,9 +194,13 @@ main {
 .thread_buttons{
     background-color: transparent;
     border:none;
-    color:rgb(104, 104, 104);
     padding:0px;
     font-size: 15px;
+}
+
+.single_thread span{
+    font-size: 15px;
+    color:rgb(104, 104, 104);
 }
 
 .delete_modal{

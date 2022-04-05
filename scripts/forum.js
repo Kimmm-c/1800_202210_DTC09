@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(user => {
                     //console.log(change.type);
                 } else {                                                //if a thread is modified
                     document.getElementById(change.doc.id).children[0].innerHTML = "<b>" + change.doc.data().title + "</b>";
-                    document.getElementById(change.doc.id).children[4].innerHTML = change.doc.data().content;
+                    document.getElementById(change.doc.id).children[6].innerHTML = change.doc.data().content;
                 }
             })
         })
@@ -33,32 +33,32 @@ firebase.auth().onAuthStateChanged(user => {
 })
 
 function renderThread(data, data_id) {
-    //console.log(data);
-    //console.log(data.title);
-    //console.log(data.details)
-    firebase.auth().onAuthStateChanged(user => {
-        //console.log(user.uid);
-        //console.log(data.userID);
-        if (user.uid == data.userID) {
-            $(".thread_render").prepend(`<div class="single_thread" id=${data_id}>
-        <h5><b>${data.title}</b></h5>
-        <button class="thread_buttons edit_post">Edit post |</button> 
-        <button class="thread_buttons delete_post">Delete post</button>
-        <hr>
-        <p>${data.content}</p>
-        <hr>
-        <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
-        } else {
-            $(".thread_render").prepend(`<div class="single_thread">
-        <h5><b>${data.title}</b></h5>
-        <button class="thread_buttons report_post">Report</button>
-        <hr>
-        <p>${data.content}</p>
-        <hr>
-        <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
-        }
-    })
+    db.collection(`thread/${data_id}/comments`).get().then((comments) => {
+        number_of_comment = comments.docs.length;
 
+        firebase.auth().onAuthStateChanged(user => {
+            if (user.uid == data.userID) {
+                $(".thread_render").prepend(`<div class="single_thread" id=${data_id}>
+            <h5><b>${data.title}</b></h5>
+            <span><em>Last updated: ${data.last_updated.toDate()}</em></span><br>
+            <button class="thread_buttons edit_post">Edit post |</button> 
+            <button class="thread_buttons delete_post">Delete post</button>
+            <hr>
+            <p>${data.content}</p>
+            <hr>
+            <div><a class="comment_section" data="${data_id}" href="comment.html">${number_of_comment} Comments</a></div></div>`)
+            } else {
+                $(".thread_render").prepend(`<div class="single_thread">
+            <h5><b>${data.title}</b></h5>
+            <span><em>Last updated: ${data.last_updated.toDate()}</em></span><br>
+            <button class="thread_buttons report_post">Report</button>
+            <hr>
+            <p>${data.content}</p>
+            <hr>
+            <div><a class="comment_section" data="${data_id}" href="comment.html">${number_of_comment} Comments</a></div></div>`)
+            }
+        })
+    })
 }
 
 
@@ -98,7 +98,7 @@ function saveThread() {
                 console.log("user not signed in")
             }
         })
-    }else{
+    } else {
         $("#thread").append(`<p style="color: red"><em>Missing title or content.</em></p>`)
     }
 }
