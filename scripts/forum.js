@@ -10,7 +10,7 @@ firebase.auth().onAuthStateChanged(user => {
         db.collection("thread").orderBy('last_updated').onSnapshot(snapshot => {
             //console.log(snapshot.docChanges());
             realtime_thread = snapshot.docChanges();
-            realtime_thread.forEach(change => {                        
+            realtime_thread.forEach(change => {
                 if (change.type == 'added') {                           //if new thread is added
                     //console.log(change.doc.data());
                     console.log(change.type);
@@ -22,13 +22,13 @@ firebase.auth().onAuthStateChanged(user => {
                     thread.remove();
                     //console.log(change.type);
                 } else {                                                //if a thread is modified
-                    document.getElementById(change.doc.id).children[0].innerHTML = "<b>"+change.doc.data().title+"</b>";
+                    document.getElementById(change.doc.id).children[0].innerHTML = "<b>" + change.doc.data().title + "</b>";
                     document.getElementById(change.doc.id).children[4].innerHTML = change.doc.data().content;
                 }
             })
         })
-    }else{
-        window.location.href="../../login.html";
+    } else {
+        window.location.href = "../../login.html";
     }
 })
 
@@ -58,7 +58,7 @@ function renderThread(data, data_id) {
         <div><a class="comment_section" data="${data_id}" href="comment.html">Comment</a></div></div>`)
         }
     })
-    
+
 }
 
 
@@ -81,21 +81,26 @@ function saveJournal() {
 }
 
 function saveThread() {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            db.collection("thread").add({
-                title: $("#thread_title").val(),
-                content: $("#thread_content").val(),
-                userID: user.uid,
-                last_updated: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            console.log("data added");
-            $("#thread_title").val('');
-            $("#thread_content").val('');
-        } else {
-            console.log("user not signed in")
-        }
-    })
+    if ($("#thread_title").val() != '' && $("#thread_content").val() != '') {
+        $("#thread").children().last().remove();
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                db.collection("thread").add({
+                    title: $("#thread_title").val(),
+                    content: $("#thread_content").val(),
+                    userID: user.uid,
+                    last_updated: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                console.log("data added");
+                $("#thread_title").val('');
+                $("#thread_content").val('');
+            } else {
+                console.log("user not signed in")
+            }
+        })
+    }else{
+        $("#thread").append(`<p style="color: red"><em>Missing title or content.</em></p>`)
+    }
 }
 
 function display_thread_form() {
@@ -161,10 +166,10 @@ function display_edit_form() {
     //console.log($(this).parent());
 }
 
-function updateThread(){
+function updateThread() {
     //console.log($(this).attr("id"));
-    update_title=$(this).siblings("input").val();
-    update_content=$(this).siblings("textarea").val();
+    update_title = $(this).siblings("input").val();
+    update_content = $(this).siblings("textarea").val();
     //console.log(update_title);
     console.log(update_content);
     db.collection("thread").doc($(this).attr("id")).update({
@@ -175,7 +180,7 @@ function updateThread(){
     $(this).parent().remove();
 }
 
-function save_to_storage(){
+function save_to_storage() {
     //console.log('testing');
     localStorage.setItem("threadID", $(this).attr("data"));
 }
@@ -184,7 +189,7 @@ function setup() {
     $("#start_thread").click(display_thread_form);
     $("#write_journal").click(display_journal_form);
     $("body").on('click', ".cancel_button", () => {
-        document.getElementsByClassName("cancel_button")[0].parentElement.innerHTML="";
+        document.getElementsByClassName("cancel_button")[0].parentElement.innerHTML = "";
     })
     $("body").on("click", ".delete_post", display_delete_modal);
     $("body").on("click", ".confirm_delete", deleteThread);
