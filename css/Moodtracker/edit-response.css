@@ -1,0 +1,12 @@
+.selected-mood{
+    margin: 20px;
+}
+
+#input-response{
+    width: 100%;
+    height: 300px;
+}
+
+#update_button{
+    visibility: hidden;
+}
