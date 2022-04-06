@@ -158,14 +158,10 @@ function checkifResponse() {
                         $(".trackingContainer").empty()
                         $(".trackingContainer").html(` 
                             <h4> Thank you for sharing, ${user_Name} </h4>
-                                <blockqoute id="qoute-tag"> ${getQoute()} <blockqoute>`)
-                        
+                                <blockqoute id="qoute-tag"> ${getQoute()} <blockqoute>
+                                <a href="index.html"> Back to Homepage </a>`)
                     })
                 }
             })
         })
 }
-
-setTimeout(() => {
-    window.location.href = "index.html"
-}, 10)
