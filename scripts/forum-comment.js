@@ -12,7 +12,7 @@ db.collection('thread').doc(`${threadID}`).get().then((doc) => {
 //         console.log(comment.data());
 //     })
 // })
-db.collection("thread/" + threadID + "/comments").onSnapshot((snapshot) => {
+db.collection("thread/" + threadID + "/comments").orderBy('last_updated').onSnapshot((snapshot) => {
     realtime_comment = snapshot.docChanges();
     realtime_comment.forEach(change => {
         if (change.type == 'added') {
@@ -27,7 +27,7 @@ db.collection("thread/" + threadID + "/comments").onSnapshot((snapshot) => {
 })
 
 function render_comments(data, data_id) {
-    $("#comment_box").append(`<div class="comment_div" id="${data_id}"><b>${data.username}</b>
+    $("#comment_box").prepend(`<div class="comment_div" id="${data_id}"><b>${data.username}</b>
     <p>${data.content}</p></div>`)
 }
 
@@ -49,6 +49,7 @@ function add_comment() {
                 last_updated: firebase.firestore.FieldValue.serverTimestamp()
             })
             $("#comment_content").val('');
+            $("#post_comment").attr('disabled', true);
         })
     })
 }
@@ -118,6 +119,13 @@ function setup() {
         $("#comment_edit_form").empty();
     })
     $("body").on("click", ".save_edit_comment", update_comment);
+    $("#comment_content").on("input change", () => {
+        if ($(this).val != '') {
+            $("#post_comment").attr('disabled', false);
+        } else {
+            $("#post_comment").attr('disabled', true);
+        }
+    })
 }
 
 $(document).ready(setup);
