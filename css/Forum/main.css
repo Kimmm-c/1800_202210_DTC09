@@ -197,8 +197,8 @@ main {
     padding:0px;
     color: rgb(104, 104, 104);
     font-size: 15px;
+    text-decoration: none;
 }
-
 
 .delete_modal{
     /* display: none; */
