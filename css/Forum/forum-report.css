@@ -1,0 +1,25 @@
+.report_thread{
+    margin: 20px;
+}
+
+.report_thread form div{
+    margin-bottom: 10px;
+    font-family: Apercu, sans-serif;
+}
+
+button{
+    border-width: 0.25px;
+    border-radius: 0.5rem;
+    background-color: transparent;
+}
+
+#cancel_thread_report{
+    color: rgb(255, 255, 255);
+    background: rgb(126, 199, 146);
+}
+
+#report_update_message{
+    color: rgb(104, 104, 104);
+    text-align: center;
+    height: 300px;
+}

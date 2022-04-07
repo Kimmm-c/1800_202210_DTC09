@@ -46,9 +46,9 @@ function renderThread(data, data_id) {
             <hr>
             <div><a class="comment_section" data="${data_id}" href="comment.html">${number_of_comment} Comments</a></div></div>`)
             } else {
-                $(".thread_render").prepend(`<div class="single_thread">
+                $(".thread_render").prepend(`<div class="single_thread" id=${data_id}>
             <h5><b>${data.title}</b></h5>
-            <button class="thread_buttons report_post">Report</button>
+            <a class="thread_buttons report_post" href="report.html" data="${data_id}">Report</a>
             <hr>
             <p>${data.content}</p>
             <hr>
@@ -200,7 +200,7 @@ function setup() {
     $("body").on("click", ".edit_post", display_edit_form);
     $("body").on("click", ".update_thread", updateThread);
     $("body").on("click", ".comment_section", save_to_storage);
-    //$("#thread_submit_button").click(saveThread);
+    $("body").on("click", ".report_post", save_to_storage);
 }
 $(document).ready(setup);
 
