@@ -23,7 +23,7 @@ function submit_report_form(report_reason) {
             report_reason: report_reason,
             submit_time: firebase.firestore.FieldValue.serverTimestamp()
         })
-        $(".report_thread").html(`<div id='report_update_message'>You has successfully submitted your report. We always take your concern seriously. Please allow us 2-3 business days for response.</div>`)
+        $(".report_thread").html(`<div id='report_update_message'>You have successfully submitted your report. We always take your concern seriously. Please allow us 2-3 business days for response.</div>`)
     })
 }
 
