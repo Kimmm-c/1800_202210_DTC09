@@ -77,14 +77,14 @@ function saveJournal() {
                 console.log("user not signed in")
             }
         })
-    }else{
+    } else {
         $(".warning_message").remove();
         $("#journal").append(`<p class="warning_message" style="color: red"><em>Missing title or content.</em></p>`)
     }
 }
 
 function saveThread() {
-    if ($("#thread_title").val() != '' && $("#thread_content").val() != '') {  
+    if ($("#thread_title").val() != '' && $("#thread_content").val() != '') {
         $(".warning_message").remove();
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
@@ -151,7 +151,7 @@ function display_delete_modal() {
 function deleteThread() {
     //console.log($(this).parent().parent().parent().attr("id"));
     threadID = $(this).parent().parent().parent().attr("id");
-    //db.collection(`thread/${threadID}/comments`).delete();
+    //db.collection(`thread/${threadID}/comments`).doc().delete();
     db.collection("thread").doc(threadID).delete();
 }
 
