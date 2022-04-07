@@ -40,29 +40,7 @@
 
     <!-- Link to styles of your own -->
     <link type="text/css" href="../css/style.css">
-
-    <style>
-        .container {
-            text-align: center;
-        }
-
-        #choices {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #choices button {
-            padding: 10px;
-            margin: 10px;
-            width: 150px;
-        }
-
-        #back-button {
-            float: right;
-        }
-    </style>
-
+    <link rel="stylesheet" href="../../css/Moodtracker/daily-mood.css">
 </head>
 
 <body>
@@ -70,29 +48,38 @@
         <h3>Today: <span id="today-date"></span></h3>
         <div class="container-fluid py-5 trackingContainer">
             <div class="container">
-                <h3>Today: <span id="today-date"></span></h3>
                 <h4> How are you feeling? </h4>
             </div>
             <section id="choices">
-                <button class="btn-lg btn-outline-success response_button" value="Splendid">
-                    <span class="material-icons"> sentiment_very_satisfied </span>
-                    <span class="mood-labels"> Splendid </span></button>
-                <button class="btn-lg btn-outline-success response_button" value="Good">
-                    <span class="material-icons"> sentiment_satisfied_alt </span>
-                    <span class="mood-labels"> Good </span></button>
-                <button class="btn-lg btn-outline-success response_button" value="Meh">
-                    <span class="material-icons"> sentiment_satisfied </span>
-                    <span class="mood-labels"> Meh </span></button>
-                <button class="btn-lg btn-outline-success response_button" value="Bad">
-                    <span class="material-icons"> sentiment_dissatisfied </span>
-                    <span class="mood-labels"> Bad </span></button>
-                <button class="btn-lg btn-outline-success response_button" value="Awful">
-                    <span class="material-icons"> sentiment_very_dissatisfied </span>
-                    <span class="mood-labels"> Awful </span></button>
+                <div class="icon-container">
+                    <button class="response_button" id="splendid-button" value="Splendid">
+                        <span class="material-icons"> sentiment_very_satisfied </span></button>
+                    <span class="mood-labels"> Splendid </span>
+                </div>
+                <div class="icon-container">
+                    <button class="response_button" id="good-button" value="Good">
+                        <span class="material-icons"> sentiment_satisfied_alt </span></button>
+                    <span class="mood-labels"> Good </span>
+                </div>
+                <div class="icon-container">
+                    <button class="response_button" id="meh-button" value="Meh">
+                        <span class="material-icons"> sentiment_satisfied </span></button>
+                    <span class="mood-labels"> Meh </span>
+                </div>
+                <div class="icon-container">
+                    <button class="response_button" id="bad-button" value="Bad">
+                        <span class="material-icons"> sentiment_dissatisfied </span></button>
+                    <span class="mood-labels"> Bad </span>
+                </div>
+                <div class="icon-container middle">
+                    <button class="response_button" id="awful-button" value="Awful">
+                        <span class="material-icons"> sentiment_very_dissatisfied </span></button>
+                    <span class="mood-labels"> Awful </span>
+                </div>
             </section>
-            <button id="next-button" type="button" class="btn btn-outline-success"
-                onclick="getMood(moodRating)">Submit</button>
-            `
+            <div class="emotion-buttons">
+                <button id="next-button" type="button" class="btn-lg" onclick="getMood(moodRating)"> > </button>
+            </div>
         </div>
     </div>
 </body>

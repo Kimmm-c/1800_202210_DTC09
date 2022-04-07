@@ -2,6 +2,7 @@ var moodRating; // Global variable for user's submitted mood rating
 var DocUID; // Global variable to get the uid document of current date
 var currentUser; // Global variable for CurrentUser
 var TODAY; // Global variable for today's date
+var emotionButtons = document.getElementsByClassName("response_button");
 
 firebase.auth().onAuthStateChanged(user => {
     // A function that takes the current user who is login
@@ -61,11 +62,12 @@ function checkifRating() {
                 if (TODAY === day) {  // If day is the same as the today, the card will be disabled and instead show a text
                     DocUID = doc.id
                     $(".trackingContainer").empty()
-                    $(".trackingContainer").html(`<h3> You rated: ${feeling} </h3> 
-                                    <div> <h4 id="question"> ${writeQuestion(feeling)} <h4>
-                                    <input type="text" id="UserResponse" name="UserResponse" placeholder="Start writing here?" value=""> </div>
-                                    <button id="response-button" type="button" class="btn btn-outline-success" 
-                                            onclick="getResponse()">Submit</button>`)
+                    $(".trackingContainer").html(`<h3> You rated: ${feeling}</button> </h3> 
+                                    <br>
+                                    <div id="input-container"> <h4 id="question"> ${writeQuestion(feeling)}</h4>
+                                    <textarea id="UserResponse" name="UserResponse" placeholder="Write here" value=""> </textarea>
+                                    <button id="response-button" type="button" class="btn-lg" 
+                                            onclick="getResponse()"> Submit </button>`)
                 }
             })
         })
@@ -143,6 +145,10 @@ function WriteQoutes() {
     })
 }
 
+function backToIndex() {
+    window.location.replace("index.html");
+}
+
 // A function that disables the question-write card
 // Will then show a random quote
 function checkifResponse() {
@@ -157,11 +163,80 @@ function checkifResponse() {
                         user_Name = userDoc.data().name;
                         $(".trackingContainer").empty()
                         $(".trackingContainer").html(` 
-                            <h4> Thank you for sharing, ${user_Name} </h4>
-                                <blockqoute id="qoute-tag"> ${getQoute()} <blockqoute>
-                                <a href="index.html"> Back to Homepage </a>`)
+                                <div id="qoute-tag">
+                                <blockqoute> ${getQoute()} <blockqoute> </div>
+                                <h6> Thank you for sharing, ${user_Name} </h6>`)
+                        setTimeout(backToIndex, 3000)
                     })
                 }
             })
         })
+}
+
+function change_colour(){
+    if (this.id.includes('splendid')){
+        document.getElementById("splendid-button").style.color = "rgb(255,248,220)"
+        document.getElementById("splendid-button").style.backgroundColor = "rgb(255,127,80)"
+        document.getElementById("good-button").style.color = "rgb(50,205,50)"
+        document.getElementById("good-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("meh-button").style.color = "rgb(64,224,208)"
+        document.getElementById("meh-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("bad-button").style.color = "rgb(0,191,255)"
+        document.getElementById("bad-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("awful-button").style.color = "rgb(65,105,225)"
+        document.getElementById("awful-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+    }
+    if (this.id.includes('good')){
+        document.getElementById("good-button").style.color = "rgb(255,248,220)"
+        document.getElementById("good-button").style.backgroundColor = "rgb(50,205,50)"
+        document.getElementById("splendid-button").style.color = "rgb(255,127,80)"
+        document.getElementById("splendid-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("meh-button").style.color = "rgb(64,224,208)"
+        document.getElementById("meh-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("bad-button").style.color = "rgb(0,191,255)"
+        document.getElementById("bad-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("awful-button").style.color = "rgb(65,105,225)"
+        document.getElementById("awful-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+    }
+    if (this.id.includes('meh')){
+        document.getElementById("good-button").style.color = "rgb(50,205,50)"
+        document.getElementById("good-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("splendid-button").style.color = "rgb(255,127,80)"
+        document.getElementById("splendid-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("meh-button").style.color = "rgb(255,248,220)"
+        document.getElementById("meh-button").style.backgroundColor = "rgb(64,224,208)"
+        document.getElementById("bad-button").style.color = "rgb(0,191,255)"
+        document.getElementById("bad-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("awful-button").style.color = "rgb(65,105,225)"
+        document.getElementById("awful-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+    }
+    if (this.id.includes('bad')){
+        document.getElementById("good-button").style.color = "rgb(50,205,50)"
+        document.getElementById("good-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("splendid-button").style.color = "rgb(255,127,80)"
+        document.getElementById("splendid-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("meh-button").style.color = "rgb(64,224,208)"
+        document.getElementById("meh-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("bad-button").style.color = "rgb(255,248,220)"
+        document.getElementById("bad-button").style.backgroundColor = "rgb(0,191,255)"
+        document.getElementById("awful-button").style.color = "rgb(65,105,225)"
+        document.getElementById("awful-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+    }
+    if (this.id.includes('awful')){
+        document.getElementById("good-button").style.color = "rgb(50,205,50)"
+        document.getElementById("good-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("splendid-button").style.color = "rgb(255,127,80)"
+        document.getElementById("splendid-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("meh-button").style.color = "rgb(64,224,208)"
+        document.getElementById("meh-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("bad-button").style.color = "rgb(0,191,255)"
+        document.getElementById("bad-button").style.backgroundColor = "rgba(230,230,250, 0.5)"
+        document.getElementById("awful-button").style.color = "rgb(255,248,220)"
+        document.getElementById("awful-button").style.backgroundColor = "rgb(65,105,225)"
+    }
+}
+
+for (i = 0; i < emotionButtons.length; i++) {
+    console.log(emotionButtons[i])
+    emotionButtons[i].addEventListener("click", change_colour)
 }
