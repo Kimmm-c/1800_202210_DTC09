@@ -7,8 +7,8 @@ firebase.auth().onAuthStateChanged(user => {
     if (user) {
         currentUser = db.collection("user").doc(user.uid);   //global
         // the following functions are always called when someone is logged in
-        getID()
-        populate_page()
+        getID() // Takes the document id that is being edited of the url
+        populate_page() // Populate the page
     } else {
         // No user is signed in.
         console.log("No user is signed in");
@@ -16,46 +16,51 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
-
+// Populate the page with user's emotion, date it was written on, their responnse and the question that day
 function populate_page() {
-    currentUser.collection("dailymood").doc(UID).get()
+    currentUser.collection("dailymood").doc(UID).get() // visits the specific document that is being edited
         .then(mood => {
-            var rating = mood.data().emotion;
-            var day = mood.data().date;
-            var quest = mood.data().question;
-            var answer = mood.data().response;
-            document.getElementById("emotion").innerHTML = rating;
-            document.getElementById("date").innerHTML = day;
-            document.getElementById("question").innerHTML = quest;
-            document.getElementById("input-response").value = answer;
-            RESPONSE = answer
+            var rating = mood.data().emotion; // takes the emotion value
+            var day = mood.data().date; // takes the date value
+            var quest = mood.data().question; // takes the question value
+            var answer = mood.data().response; // takes the response value
+            document.getElementById("emotion").innerHTML = rating; // populate the emotion id
+            document.getElementById("date").innerHTML = day;  // populate the date id
+            document.getElementById("question").innerHTML = quest; // populate the question id
+            document.getElementById("input-response").value = answer; // populate the input-response value
+            RESPONSE = answer // gets user's response where it will be use to be compared later
         })
 }
 
-
-function visible_button(){
-    currentResponse = document.getElementById("input-response").value
-    if (currentResponse === RESPONSE) {
-        document.getElementById("update_button").style.visibility = "hidden"
-    } else {
-        document.getElementById("update_button").style.visibility = "visible"
+// Updates the respponse field if user added more information during the editing
+function overwrite_response() {
+    currentResponse = document.getElementById("input-response").value // gets the value of the text-area tag
+    if (currentResponse === RESPONSE) { // A condition that user did not change anything
+        alert("There are no changes") // it will alert the user
+    } else { // If user indeed edited something
+        currentUser.collection("dailymood").doc(UID) // the function will visit the document using the id from the url
+            .update({
+                response: document.getElementById("input-response").value, // updates it with the new input
+                
+            })
+            go_home()
     }
 }
 
-
-function overwrite_response(){
-    currentUser.collection("dailymood").doc(UID)
-    console.log(document.getElementById("input-response").value)
-    .update({
-        response: document.getElementById("input-response").value
-    })
-}
-
-
+// Gets the ID of the url
 function getID() {
-    let params = new URL(window.location.href)
-    UID = params.searchParams.get("id")
+    let params = new URL(window.location.href) // takes the url
+    UID = params.searchParams.get("id") // takes the id value from the url
 }
 
-document.getElementById("input-response").addEventListener("change", visible_button)
+// Used when user clicked on the home button
+function go_home(){
+    alert("Going back to Mood Tracker") // it will alert the user what is going on
+    window.location.href = "index.html" // Goes back to the moodtracker homepage
+}
+
+// Listens if user clicked the update_button button
 document.getElementById("update_button").addEventListener("click", overwrite_response)
+
+// Listens if the user clicked back_button button
+document.getElementById("back_button").addEventListener("click", go_home)

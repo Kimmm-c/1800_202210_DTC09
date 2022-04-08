@@ -26,23 +26,25 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="stylesheet" href="./css/">
+    <link type="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <header><nav id="navbarPlaceholder"></nav></header>
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
     <!-- Jumbotron -->
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold">FRIEND is here for you, <span id="name-goes-here">...</span></h1>
-                <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="col-md-8 fs-4"> We offer Mood Track to track your mood, Forum for community connections,
+                    and to calm youself down when feeling overwhelmed with our Meditation
+                </p>
             </div>
         </div>
 
@@ -51,18 +53,24 @@
                 <div class="h-100 p-5 text-white bg-dark rounded-3">
                     <h2>Mental Health</h2>
                     <h5>What you need to know</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                    <button class="btn btn-outline-light" type="button">Explore</button>
+                    <p>Mental health includes our emotional, psychological, and social well-being. It affects how we
+                        think, feel, and act. It also helps determine how we handle stress, relate to others, and make
+                        choices. Mental health is important at every stage of life, from childhood and adolescence
+                        through adulthood.</p>
+                    <button class="btn btn-outline-light" id="mental-health" type="button">Explore</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="h-100 p-5 bg-light border rounded-3">
-                    <h2>What you can expect from your FRIEND</h2>
-                    <p>Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit. Feugiat in ante metus
-                        dictum
-                        at. Nisl tincidunt eget nullam non nisi est sit.</p>
-                    <button class="btn btn-outline-secondary" type="button">Explore</button>
+                    <h2>What you can expect from FRIEND</h2>
+                    <ul>
+                        <li> Encouragement </li>
+                        <li> Confidentiality </li>
+                        <li> Trustworthy </li>
+                        <li> Relaxation </li>
+                        <li> Supportive </li>
+                        <li> Care </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -73,4 +81,5 @@
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
+
 </html>

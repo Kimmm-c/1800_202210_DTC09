@@ -28,7 +28,7 @@ function getMood(moodResponse) {
         emotion: moodResponse,   // Creates field for the rating they submitted
         date: today,     // Creates a field for the current date
     }).then(function () {
-        console.log("Added subcollection")
+        console.log("Added subcollection") // consoles if the moodtrack was stored to Firebase
         checkifRating()
     })
         .catch((error) => {
@@ -36,24 +36,20 @@ function getMood(moodResponse) {
         })
 }
 
+// Function that updates the span (today-date) which contains date into real-time date
 function currentdate() {
-    // Function that updates the span (today-date) which contains date into real-time date
     TODAY = new Date().toDateString() // takes a new date
 
     $("#today-date").html(TODAY) // shows it to the website
 }
 
-
+// A function that keeps track which button user clicked
 $(".response_button").click(function () {
-    // A function that keeps track which button user
-    // clicked
     moodRating = $(this).val();
 })
 
-
+// Function that disables the rating card if User has done it for today
 function checkifRating() {
-    // Function that disables the rating card
-    // if User has done it for today
     currentUser.collection("dailymood").get() // Visits the dailymood subcollection of the user
         .then(allRating => {
             allRating.forEach(doc => { // Visits each document in the subcollection
@@ -79,17 +75,19 @@ function writeQuestion(mood) {
     number = parseInt((Math.random() * (9 - 1 + 1)), 10) + 1 // picks a random number
     mood = decomposing(mood)    // change the emotion to number value
     randq = "Q" + number
-    if (mood >= 3) {
+    if (mood >= 3) { // Using the rating, if user rating is greater than Meh 
+                    // Then the function will show one of the questions from the FeelingUp document
         db.collection("MoodQuestions").doc("FeelingUp").get().then(question => {
 
-            randomQ = question.data()[randq]
-            $("#question").html(randomQ)
+            randomQ = question.data()[randq] // Used to picked a random question
+            $("#question").html(randomQ) // Shows the picked question to the question id
         })
-    } else {
+    } else {// Using the rating, if user rating is less than Meh 
+        // Then the function will show one of the questions from the FeelingDown document
         db.collection("MoodQuestions").doc("FeelingDown").get().then(question => {
 
-            randomQ = question.data()[randq]
-            $("#question").html(randomQ)
+            randomQ = question.data()[randq] // Used to picked a random question
+            $("#question").html(randomQ) // Shows the picked question to the question id
         })
     }
 
@@ -115,22 +113,23 @@ function getResponse() {
     UserResponse = currentUser.collection("dailymood").doc(DocUID);
     checkifResponse()
     UserResponse.update({
-        response: $("#UserResponse").val(),
-        question: document.getElementById("question").innerHTML,
+        response: $("#UserResponse").val(), // add a new field response and its input is taken from the textarea
+        question: document.getElementById("question").innerHTML, // add a new field question and takes the question displayed to user
 
     })
 }
 
 // Gets a random quote from the document
 function getQoute() {
-    number = parseInt((Math.random() * (6 - 1 + 1)), 10) + 1
+    number = parseInt((Math.random() * (6 - 1 + 1)), 10) + 1 // gets a random number
     db.collection("MoodQuestions").doc("Qoutes").get().then(qoute => {
-        pickedQoute = qoute.data().qoutes[number];
-        $("#qoute-tag").html(pickedQoute)
+        pickedQoute = qoute.data().qoutes[number]; // using the random number, it will be used as an index to get a random qoute from the array
+        $("#qoute-tag").html(pickedQoute) // displays the picked qoute to the user
     });
 }
 
-
+// Used to add more qoutes to the document "Qoutes" rather than manually doing it
+// I am too lazzyyyy
 function WriteQoutes() {
     CurrentDoc = db.collection("MoodQuestions").doc("Qoutes")
     CurrentDoc.update({
@@ -145,6 +144,8 @@ function WriteQoutes() {
     })
 }
 
+// Used to take the user to the MoodTracker homepage
+// After moodtracking
 function backToIndex() {
     window.location.replace("index.html");
 }
@@ -157,22 +158,27 @@ function checkifResponse() {
             allRating.forEach(doc => { // Visits each document in the subcollection
                 day = doc.data().date  // And takes the date field of the document
                 response = doc.data().response
-                if (TODAY === day && response !== undefined) {  // If day is the same as the today, the card will be disabled and instead show a quote
+                if (TODAY === day && response !== undefined) {  // If day is the same as the today, 
+                                                                //the card will be disabled and instead show a quote
                     var user_Name;
-                    currentUser.get().then(userDoc => {
+                    currentUser.get().then(userDoc => { 
                         user_Name = userDoc.data().name;
-                        $(".trackingContainer").empty()
+                        $(".trackingContainer").empty() // empties the container
+                        // shows a qoute and an appreciation
                         $(".trackingContainer").html(` 
                                 <div id="qoute-tag">
                                 <blockqoute> ${getQoute()} <blockqoute> </div>
                                 <h6> Thank you for sharing, ${user_Name} </h6>`)
-                        setTimeout(backToIndex, 3000)
+                        // sets a timer that after 3000 seconds it will return User back to Moodtracker homepage
+                        setTimeout(backToIndex, 5000)
+                        alert("You are being directed to MoodTrack Page") // informs user what is happening
                     })
                 }
             })
         })
 }
 
+// Changes the colour of the button that is clicked by the user
 function change_colour(){
     if (this.id.includes('splendid')){
         document.getElementById("splendid-button").style.color = "rgb(255,248,220)"
@@ -236,6 +242,7 @@ function change_colour(){
     }
 }
 
+// Identifies the button that is clicked
 for (i = 0; i < emotionButtons.length; i++) {
     console.log(emotionButtons[i])
     emotionButtons[i].addEventListener("click", change_colour)
