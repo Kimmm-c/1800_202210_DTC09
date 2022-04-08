@@ -2,6 +2,9 @@ let uid = localStorage.getItem('uid')
 
 
 async function populateRecent() {
+    // Hidden by default
+    // Populates the user's bookmarked activities by
+    // pulling from the firebase collection
     let recentTab = document.getElementById('recent');
     if (recentTab.className == 'buttonInactive') return;
 
@@ -24,6 +27,9 @@ async function populateRecent() {
 
 
 function populateFeatured() {
+    // Shown by default
+    // Populates the three activities that the user can
+    // click either 3 to navigate to the activity's list of songs
     let activityCardTemplate = document.getElementById("activityCardTemplate");
     let activityCardGroup = document.getElementById("activityCardGroup");
 
@@ -40,16 +46,19 @@ function populateFeatured() {
 
 
 function setActivityData(element) {
+    // stores the activityName to local storage
     localStorage.setItem('activityName', element)
 }
 
 
 function getRandInt(min, max) {
+    // general random int function
     return Math.floor((Math.random() * max) + min);
 };
 
 
 function clickTab() {
+    // Onclick will toggle between the recent and featured container
     let recentTab = document.getElementById('recent');
     let featuredTab = document.getElementById("featured");
 

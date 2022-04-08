@@ -1,4 +1,5 @@
 function populateAccount() {
+    // On logged in user, populates their info to each field on the accounts container
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             currentUser = db.collection("user").doc(user.uid);
@@ -15,6 +16,7 @@ function populateAccount() {
 
 
 function previewer(uploader) {
+    // gives user the option to upload their on profile picture to be displayed
     if (uploader.files && uploader.files[0]) {
         $('#pfp-image').attr('src', window.URL.createObjectURL(uploader.files[0]))
         console.log($('#pfp-image').attr('src'))
@@ -23,6 +25,7 @@ function previewer(uploader) {
 
 
 function editInfo() {
+    // with the UID, the values for each field will be updated to the firebase
     let uid = localStorage.getItem('uid');
     db.collection("user").doc(uid).update({
         name: $('input[name="name"]').val(),   
@@ -31,12 +34,12 @@ function editInfo() {
         country:  $('#country').find(':selected').text(),
         profilePic: null,
     })
-    .then(() => {
+    .then(() => { // Successful update to firebase will print Saved! beside the save button
       console.log('Successfully added additional info to firebase');
       document.getElementById('result').innerHTML = 'Saved!'
       
     })
-    .catch(e => {
+    .catch(e => { // Error updating to firebase will produce an error message
         console.log(e)
         document.getElementById('result').innerHTML = 'Error!'
     })
@@ -44,6 +47,7 @@ function editInfo() {
 
 
 async function populateMeditation() {
+    // Dynamically populates the meditation container from the firebase meditation collection by current UID
     let uid = localStorage.getItem('uid')
     let meditationTemplate = document.getElementById("meditation-template");
     let meditationCardGroup = document.getElementById("meditation-container");
@@ -61,6 +65,7 @@ async function populateMeditation() {
 
 
 async function populateForum() {
+    // Dynamically populates the Journal container from the firebase Journal collection by current UID
     let uid = localStorage.getItem('uid')
     let forumTemplate = document.getElementById("forum-template");
     let forumCardGroup = document.getElementById("forum-container");
@@ -78,6 +83,8 @@ async function populateForum() {
 
 
 async function populateMood() {
+    // Dynamically populates the moodtracker container from the firebase collection 
+    // by current UID's dailymood subcollection
     let uid = localStorage.getItem('uid')
     let moodTemplate = document.getElementById("mood-template");
     let moodCardGroup = document.getElementById("mood-container");
@@ -92,11 +99,12 @@ async function populateMood() {
     })
 }
 
-
+// when the id pfp-image is clicked, it will invoke the id of img-upload click
 $('#pfp-image').click(() => {
     $('#img-upload').click()
 });
 
+// will invoke the previewer function on any change to the id img-upload
 $("#img-upload").change(function () {
     previewer(this);
 });

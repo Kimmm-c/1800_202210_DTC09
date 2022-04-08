@@ -1,7 +1,8 @@
+// Global variables used for activity page
 let activityName = localStorage.getItem('activityName');
 let uid = localStorage.getItem('uid')
 
-
+// populates the list of activity songs by the activityName stored in the local storage
 db.collection('meditation').where("activity", "==", activityName)
     .get()
     .then(queryActivity => {
@@ -16,6 +17,8 @@ db.collection('meditation').where("activity", "==", activityName)
 
 
 function populateSection() {
+    // The main function used to populate the specific songs
+    // according to the activityName chosen from the previous page
     let activityContainer = document.getElementById('activityCard');
     let activitySection = document.getElementById('activitySection');
 
@@ -42,6 +45,8 @@ function populateSection() {
  
 
 function toggleBookmark(activityID) {
+    // Toggle function used to invoke the bookmark functions
+    // if statement used so it won't push duplicate uids to the array
     let activityIDRef = db.collection("meditation").doc(activityID)
     activityIDRef.get().then(data => {
         if (!data.data().bookmarks.includes(uid)) saveBookmark(activityID)
@@ -51,12 +56,13 @@ function toggleBookmark(activityID) {
 
 
 function saveBookmark(activityID) {
+    // Save uid into bookmark array
     db.collection("meditation").doc(activityID).set({
             bookmarks: firebase.firestore.FieldValue.arrayUnion(uid)
         }, {
             merge: true
         })
-        .then(function () {
+        .then(function () { // invokes likeToggle to change the color of the heart icon
             console.log(`bookmark ${activityID} added for user (${uid})`);
             var iconID = 'save-' + activityID;
             likeToggle(iconID, true)
@@ -65,10 +71,11 @@ function saveBookmark(activityID) {
 
 
 function deleteBookmark(activityID) {
+    // removes uid from bookmark array
     db.collection("meditation").doc(activityID).update({
         bookmarks: firebase.firestore.FieldValue.arrayRemove(uid)
     })
-    .then(function () {
+    .then(function () { // invokes likeToggle to change the color of the heart icon
         console.log(`bookmark ${activityID} removed for user (${uid})`);
         var iconID = 'save-' + activityID;
         likeToggle(iconID, false)
@@ -77,6 +84,8 @@ function deleteBookmark(activityID) {
 
 
 async function fetchQuote() {
+    // simple get request from an endpoint that pulls random mindful quotes 
+    // and prints it on the description container
     let response = await fetch(`https://mindfulness-quotes-free.p.rapidapi.com/random`, {
         "method": "GET",
         "headers": {
@@ -95,6 +104,7 @@ async function fetchQuote() {
 
 
 function createTitle() {
+    // prints random titles to the description title container
     const titles = [
         "Letting Go Of Stress",
         "Washing Your Hands",
@@ -112,6 +122,8 @@ function createTitle() {
 
 
 function likeToggle(activityID, status) {
+    // toggle function that changes the color of the heart icon
+    // by status
     const whiteHeart = '\u2661';
     const blackHeart = '\u2665';
     var button = document.getElementById(activityID);
@@ -122,4 +134,4 @@ function likeToggle(activityID, status) {
 
 populateSection();
 createTitle();
-//fetchQuote();
+fetchQuote();

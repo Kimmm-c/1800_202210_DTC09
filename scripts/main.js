@@ -45,6 +45,8 @@ function sayHello() {
 
 
 function toggleOffer(id) {
+    // simple toggle function that toggles the display of each container 
+    // to whichever of the 3 tabs the user clicks
     offers = ['#moodtracker-content', '#meditation-content', '#forum-content']
     if ($(offers[id]).css('display') === 'none') $(offers[id]).show()
     else return
