@@ -1,4 +1,6 @@
 function populateSong() {
+    // populates the song container by parsing the current url's params 
+    // and pulling the specific data using the activity ID as the unique ID
     let params = new URL(window.location.href);
     let activityId = params.searchParams.get("id");               
     let activity = params.searchParams.get("activity");
