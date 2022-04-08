@@ -40,8 +40,10 @@ function overwrite_response() {
     } else { // If user indeed edited something
         currentUser.collection("dailymood").doc(UID) // the function will visit the document using the id from the url
             .update({
-                response: document.getElementById("input-response").value // updates it with the new input
+                response: document.getElementById("input-response").value, // updates it with the new input
+                
             })
+            go_home()
     }
 }
 

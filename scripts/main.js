@@ -57,5 +57,11 @@ function toggleOffer(id) {
     }
 }
 
+function readMoreMentalHealth(){
+    window.location.href = "https://www.mentalhealth.gov/basics/what-is-mental-health"
+}
+
+document.getElementById("mental-health").addEventListener("click", readMoreMentalHealth)
+
 
 insertName();
