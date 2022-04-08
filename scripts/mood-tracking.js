@@ -167,6 +167,7 @@ function checkifResponse() {
                                 <blockqoute> ${getQoute()} <blockqoute> </div>
                                 <h6> Thank you for sharing, ${user_Name} </h6>`)
                         setTimeout(backToIndex, 3000)
+                        alert("You are being directed to MoodTrack Page")
                     })
                 }
             })

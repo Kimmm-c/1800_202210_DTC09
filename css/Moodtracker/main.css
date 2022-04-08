@@ -3,7 +3,7 @@
     margin-left: 30px;
     margin-right: 30px;
     margin-bottom: 30px;
-    background-color: rgb(226, 226, 226);
+    background-color: rgba(175,238,238, 0.9);
     height:860px;
     overflow:auto;
 }
@@ -16,12 +16,37 @@
     background-color: white;
 }
 
-.NewDayContainer{
-    background-color: aquamarine;
-    margin: 15px 30px;
-    text-align: center;
-    padding: 10px;
+.single-mood a{
+    float: right;
+    padding: 3%;
+    background-color: rgba(90, 88, 87, 0.1);
+}
 
+.today-response a{
+    float: right;
+    padding: 3%;
+    margin-right: 18px;
+    margin-bottom: 2px;
+    background-color: rgba(90, 88, 87, 0.1);
+}
+
+#NewDayContainer{
+    background-color: rgba(175,238,238, 0.9);
+    margin: 15px 30px;
+    padding: 10px;
+}
+
+.inner-today-response{
+    background-color: white;
+    border-radius: 15%;
+    padding: 6%;
+    margin: 2.4%;
+}
+
+.mood_button{
+    text-decoration: none;
+    color: black;
+    border-radius: 20%;
 }
 
 .trackContainer{
@@ -30,7 +55,7 @@
     flex-flow: row wrap;
     height: 100%;
     list-style: none;
-    margin: 10px;
+    margin: 20px 10px;
     /* margin-left: 10px; */
     padding: 0px;
     background: rgb(255, 255, 255);
@@ -42,4 +67,21 @@
 
 blockquote{
     font-size: x-large;
+}
+
+.NewDayBox{
+    background-color: white;
+    padding-top: 2%;
+    text-align: center;
+}
+
+.moodButton{
+    border: none;
+    background-color: rgba(175,238,238, 0.6);
+    padding: 5px;
+}
+
+.moodButton a{
+    text-decoration: none;
+    color: purple;
 }
