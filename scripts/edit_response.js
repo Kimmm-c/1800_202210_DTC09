@@ -41,10 +41,11 @@ function overwrite_response() {
         currentUser.collection("dailymood").doc(UID) // the function will visit the document using the id from the url
             .update({
                 response: document.getElementById("input-response").value, // updates it with the new input
-                
             })
-            go_home()
-    }
+            .then(() => {
+                go_home()
+            })
+        }
 }
 
 // Gets the ID of the url
