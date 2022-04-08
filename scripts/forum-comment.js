@@ -1,17 +1,15 @@
-threadID = localStorage.getItem("threadID");
+threadID = localStorage.getItem("threadID");    //Retrieve threadID from local storage
 console.log(threadID);
 
+
+//Display the thread to the html page
 db.collection('thread').doc(`${threadID}`).get().then((doc) => {
     $(".thread_box").append(`<h3><b>${doc.data().title}</b></h3>
     <p>Last updated: ${(doc.data().last_updated).toDate()}</p>
     <p>${doc.data().content}</p>`)
 })
 
-// db.collection("thread/" + threadID + "/comments").get().then((doc)=>{
-//     doc.docs.forEach((comment)=>{
-//         console.log(comment.data());
-//     })
-// })
+//Retrieve comments from database to later populate on the page, use onSnapshot to update the web page in realtime.
 db.collection("thread/" + threadID + "/comments").orderBy('last_updated').onSnapshot((snapshot) => {
     realtime_comment = snapshot.docChanges();
     realtime_comment.forEach(change => {
@@ -26,11 +24,13 @@ db.collection("thread/" + threadID + "/comments").orderBy('last_updated').onSnap
     })
 })
 
+//Rendering the comments from latest to oldest
 function render_comments(data, data_id) {
     $("#comment_box").prepend(`<div class="comment_div" id="${data_id}"><b>${data.username}</b>
     <p>${data.content}</p></div>`)
 }
 
+//Collect user ID, username, comment details, comment time and add to database under 'comments' sub-collection
 function add_comment() {
     userID = null;
     firebase.auth().onAuthStateChanged((user) => {
@@ -54,6 +54,7 @@ function add_comment() {
     })
 }
 
+//Display a modal that has option for user to delete/edit the comment to the web page
 function display_options() {
     //console.log('testing');
     commentID = $(this).attr("id");
@@ -75,6 +76,7 @@ function display_options() {
 
 }
 
+//Collect comment ID from the attribute 'data' of the delete button and remove the comment from database
 function delete_comment() {
     //console.log('testing');
     commentID = $(this).parent().attr("data");
@@ -82,10 +84,10 @@ function delete_comment() {
     $("#comment_options").empty();
 }
 
+//Plug the old_comment into an edit modal and display it to the user
 function edit_comment() {
     //console.log('testing');
     commentID = $(this).parent().attr("data");
-    //x = $(`#${commentID}`).children("p").text();
     //console.log(x);
     old_comment = $(`#${commentID}`).children("p").text();
     console.log(old_comment);
@@ -95,6 +97,7 @@ function edit_comment() {
     <button class="cancel_edit_comment" >Cancel</button></div>`)
 }
 
+//Track the comment using comment ID and update new comment in database
 function update_comment() {
     commentID = $(this).attr("data");
     //console.log(commentID);
