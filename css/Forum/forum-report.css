@@ -13,7 +13,7 @@ button{
     background-color: transparent;
 }
 
-#cancel_thread_report{
+#submit_thread_report{
     color: rgb(255, 255, 255);
     background: rgb(126, 199, 146);
 }
