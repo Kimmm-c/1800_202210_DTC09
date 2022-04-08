@@ -170,7 +170,7 @@ function checkifResponse() {
                                 <blockqoute> ${getQoute()} <blockqoute> </div>
                                 <h6> Thank you for sharing, ${user_Name} </h6>`)
                         // sets a timer that after 3000 seconds it will return User back to Moodtracker homepage
-                        setTimeout(backToIndex, 3000)
+                        setTimeout(backToIndex, 5000)
                         alert("You are being directed to MoodTrack Page") // informs user what is happening
                     })
                 }

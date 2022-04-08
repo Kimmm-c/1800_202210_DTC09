@@ -15,10 +15,13 @@ async function populateRecent() {
     savedActivity.forEach(data => {
         if (!data.data().bookmarks.includes(uid)) return;
         else {
+            let songName = data.data().songName;
+            let activityID = data.data().activityID;
+            let description = data.data().description;
             let activityCard = activityCardTemplate.content.cloneNode(true);
-            activityCard.querySelector('.cardTitle').innerHTML = data.data().songName;  
-            activityCard.querySelector('.cardTitle').onclick = () => console.log(data.data().songName)
-            activityCard.querySelector('.activityLength').innerHTML = data.data().description;
+            activityCard.querySelector('.cardTitle').innerHTML = songName;  
+            activityCard.querySelector('.cardTitle').href = 'eachActivity.html?activity=' + songName + `&id=` + activityID
+            activityCard.querySelector('.activityLength').innerHTML = description
             activityCard.querySelector('img').src = `https://picsum.photos/${getRandInt(200, 299)}/200/`;
             activityCardGroup.appendChild(activityCard);
         }
