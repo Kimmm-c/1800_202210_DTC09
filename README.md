@@ -17,8 +17,9 @@ Technologies used for this project:
 * Bootstrap 
 * ...
 	
-## Content
-Content of the project folder:
+## Citation:
+We don't own the images used on our main.html page, the icons in footer navbar, and the logo. 
+Illustrations used on the Meditation, Mood Tracker, and Forum page is credited to Kim Chung.
 
 ```
  Top level of project folder: 
